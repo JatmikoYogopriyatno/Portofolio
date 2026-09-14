@@ -15,7 +15,7 @@
  *  MAU MENGUBAH ISI SITUS? Ada dua cara, keduanya sama sahnya.
  *
  *  1. Lewat panel CMS  (paling gampang, tanpa menyentuh kode)
- *     Buka https://jatmikoyogopriyatno.vercel.app/admin lalu login dengan GitHub.
+ *     Buka https://jatmikoyogop.vercel.app/admin lalu login dengan GitHub.
  *
  *  2. Lewat berkas JSON di folder content/
  *     Setiap berkas isinya persis seperti daftar di bawah.

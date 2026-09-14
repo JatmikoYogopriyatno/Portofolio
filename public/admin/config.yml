@@ -72,7 +72,7 @@ backend:
   #
   # Alamat yang sama juga harus didaftarkan di GitHub OAuth App sebagai
   # Authorization callback URL, dengan tambahan /api/callback di belakangnya.
-  base_url: https://jatmikoyogopriyatno.vercel.app
+  base_url: https://jatmikoyogop.vercel.app
   auth_endpoint: api/auth/
   commit_messages:
     create: "konten: tambah {{collection}} lewat panel"
@@ -2118,7 +2118,7 @@ collections:
                   - { label: "English (opsional)", name: "en", widget: "text", required: false }
               - { label: "Kata kunci", name: "keywords", widget: "list", required: false, label_singular: "Kata kunci" }
               - { label: "Gambar preview tautan", name: "ogImage", widget: "image", hint: "Ukuran 1200x630. Dibuat ulang otomatis oleh perintah npm run assets." }
-              - { label: "Alamat situs", name: "baseUrl", widget: "string", hint: "Tanpa garis miring di akhir. Contoh: https://jatmikoyogopriyatno.vercel.app" }
+              - { label: "Alamat situs", name: "baseUrl", widget: "string", hint: "Tanpa garis miring di akhir. Contoh: https://jatmikoyogop.vercel.app" }
               - { label: "Bahasa awal", name: "locale", widget: "select", options: ["id", "en"], hint: "Bahasa yang aktif saat halaman pertama dibuka." }
               - { label: "Tema awal", name: "defaultTheme", widget: "select", options: ["system", "light", "dark"], hint: "system berarti mengikuti pengaturan perangkat pengunjung." }
               - { label: "Warna bilah alamat, mode terang", name: "themeColorLight", widget: "color", required: false }

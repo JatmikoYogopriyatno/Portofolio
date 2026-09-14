@@ -251,7 +251,7 @@ berkas di folder `content/`.
 ## 4. Panel konten di /admin
 
 Seluruh isi situs bisa diubah lewat form biasa di
-**https://jatmikoyogopriyatno.vercel.app/admin**, tanpa membuka GitHub. Setiap kali
+**https://jatmikoyogop.vercel.app/admin**, tanpa membuka GitHub. Setiap kali
 kamu menekan Publish, panel menulis commit ke repositori dan Vercel membangun
 ulang situsnya sendiri dalam satu sampai dua menit.
 
@@ -266,8 +266,8 @@ klik **New OAuth App**, lalu isi:
 | Kolom | Isi |
 | --- | --- |
 | Application name | `Panel Konten Portofolio` |
-| Homepage URL | `https://jatmikoyogopriyatno.vercel.app` |
-| Authorization callback URL | `https://jatmikoyogopriyatno.vercel.app/api/callback/` |
+| Homepage URL | `https://jatmikoyogop.vercel.app` |
+| Authorization callback URL | `https://jatmikoyogop.vercel.app/api/callback/` |
 
 Perhatikan garis miring di akhir callback URL. Harus sama persis, kalau tidak
 GitHub akan menolak dengan pesan `redirect_uri_mismatch`.

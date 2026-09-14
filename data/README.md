@@ -4,7 +4,7 @@
 
 ### Cara 1: lewat panel konten, tanpa membuka GitHub
 
-Buka **https://jatmikoyogopriyatno.vercel.app/admin** lalu login dengan GitHub. Semua
+Buka **https://jatmikoyogop.vercel.app/admin** lalu login dengan GitHub. Semua
 isi situs bisa diubah dari form biasa di sana, termasuk menambah tulisan blog
 dan mengunggah foto langsung dari ponsel.
 
@@ -1033,8 +1033,8 @@ menyangkut akun GitHub kamu sendiri. Dua langkah, sekitar lima menit.
    | Kolom | Isi |
    | --- | --- |
    | Application name | `Panel Konten Portofolio` (bebas) |
-   | Homepage URL | `https://jatmikoyogopriyatno.vercel.app` |
-   | Authorization callback URL | `https://jatmikoyogopriyatno.vercel.app/api/callback/` |
+   | Homepage URL | `https://jatmikoyogop.vercel.app` |
+   | Authorization callback URL | `https://jatmikoyogop.vercel.app/api/callback/` |
 
    > **Perhatikan garis miring di akhir callback URL.** Alamat itu harus sama
    > persis, termasuk garis miringnya. Kalau berbeda, GitHub akan menolak login
@@ -1060,7 +1060,7 @@ menyangkut akun GitHub kamu sendiri. Dua langkah, sekitar lima menit.
 5. Masuk ke tab **Deployments**, buka deployment terakhir, klik menu tiga titik,
    lalu **Redeploy**. Variabel baru hanya terbaca oleh deployment baru.
 
-Selesai. Buka `https://jatmikoyogopriyatno.vercel.app/admin`, klik **Sign In with
+Selesai. Buka `https://jatmikoyogop.vercel.app/admin`, klik **Sign In with
 GitHub**, beri izin sekali, dan panelnya siap dipakai.
 
 ### Isi panelnya
@@ -1434,7 +1434,7 @@ langsung memangkas itu jadi beberapa hari.
 
 1. Buka `https://search.google.com/search-console`
 2. Klik **Add property**, pilih **URL prefix**
-3. Isi `https://jatmikoyogopriyatno.vercel.app` lalu **Continue**
+3. Isi `https://jatmikoyogop.vercel.app` lalu **Continue**
 4. Pada pilihan verifikasi, buka **HTML tag**. Akan muncul baris seperti:
    `<meta name="google-site-verification" content="AbC123..." />`
 5. Salin **hanya bagian di dalam tanda kutip** setelah `content=`, jadi cuma
@@ -1471,7 +1471,7 @@ Situs ini baru dibuat. Wajar kalau namamu belum muncul di Google sekarang.
 Biasanya beberapa hari setelah didaftarkan halaman utama sudah terindeks, dan
 beberapa minggu untuk mulai muncul di pencarian nama.
 
-Cara memeriksanya: ketik `site:jatmikoyogopriyatno.vercel.app` di Google. Kalau sudah
+Cara memeriksanya: ketik `site:jatmikoyogop.vercel.app` di Google. Kalau sudah
 ada hasilnya, berarti situsmu sudah terindeks.
 
 ### Halaman yang sengaja tidak diindeks
