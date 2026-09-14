@@ -1,0 +1,254 @@
+{
+  "about": {
+    "eyebrow": {
+      "id": "01 / Profil",
+      "en": "01 / Profile"
+    },
+    "title": {
+      "id": "Tentang Saya",
+      "en": "About Me"
+    },
+    "subtitle": {
+      "id": "Dosen dan peneliti Administrasi Publik yang bekerja di persimpangan kajian akademik dan perumusan kebijakan daerah.",
+      "en": "A Public Administration lecturer and researcher working where academic inquiry meets local policy formulation."
+    }
+  },
+  "experience": {
+    "eyebrow": {
+      "id": "02 / Tridharma",
+      "en": "02 / Tridharma"
+    },
+    "title": {
+      "id": "Pengalaman",
+      "en": "Experience"
+    },
+    "subtitle": {
+      "id": "Peran pengajaran, penelitian, pengabdian, dan konsultansi kebijakan yang dijalankan secara beriringan.",
+      "en": "Teaching, research, community service, and policy consultancy roles carried out side by side."
+    }
+  },
+  "penelitian": {
+    "eyebrow": {
+      "id": "03 / Penelitian",
+      "en": "03 / Research"
+    },
+    "title": {
+      "id": "Pengalaman Penelitian",
+      "en": "Research Experience"
+    },
+    "subtitle": {
+      "id": "Sepuluh penelitian dalam lima tahun terakhir, di luar skripsi dan tesis.",
+      "en": "Ten research projects over the past five years, excluding thesis work."
+    }
+  },
+  "pengabdian": {
+    "eyebrow": {
+      "id": "04 / Pengabdian",
+      "en": "04 / Service"
+    },
+    "title": {
+      "id": "Pengabdian kepada Masyarakat",
+      "en": "Community Service"
+    },
+    "subtitle": {
+      "id": "Tujuh kegiatan pengabdian yang berfokus pada penguatan kapasitas aparatur dan masyarakat desa.",
+      "en": "Seven community service programmes focused on building village official and community capacity."
+    }
+  },
+  "publications": {
+    "eyebrow": {
+      "id": "05 / Publikasi",
+      "en": "05 / Publications"
+    },
+    "title": {
+      "id": "Publikasi Ilmiah",
+      "en": "Scholarly Publications"
+    },
+    "subtitle": {
+      "id": "Dua puluh enam artikel pada jurnal nasional dan internasional, mencakup luaran riset dan pengabdian.",
+      "en": "Twenty-six articles in national and international journals, covering both research and service outputs."
+    }
+  },
+  "seminar": {
+    "eyebrow": {
+      "id": "06 / Seminar",
+      "en": "06 / Conferences"
+    },
+    "title": {
+      "id": "Pemakalah Seminar",
+      "en": "Conference Papers"
+    },
+    "subtitle": {
+      "id": "Lima belas pemakalahan pada forum ilmiah nasional dan internasional.",
+      "en": "Fifteen papers presented at national and international academic forums."
+    }
+  },
+  "buku": {
+    "eyebrow": {
+      "id": "07 / Buku",
+      "en": "07 / Books"
+    },
+    "title": {
+      "id": "Karya Buku",
+      "en": "Authored Books"
+    },
+    "subtitle": {
+      "id": "Sepuluh buku ajar dan monograf yang terbit dalam lima tahun terakhir.",
+      "en": "Ten textbooks and monographs published over the past five years."
+    }
+  },
+  "hki": {
+    "eyebrow": {
+      "id": "08 / HKI",
+      "en": "08 / IP Rights"
+    },
+    "title": {
+      "id": "Hak Kekayaan Intelektual",
+      "en": "Intellectual Property"
+    },
+    "subtitle": {
+      "id": "Enam sertifikat HKI atas karya buku dan poster ilmiah.",
+      "en": "Six registered IP certificates for books and academic posters."
+    }
+  },
+  "kebijakan": {
+    "eyebrow": {
+      "id": "09 / Kebijakan",
+      "en": "09 / Policy"
+    },
+    "title": {
+      "id": "Perumusan Kebijakan Publik",
+      "en": "Public Policy Formulation"
+    },
+    "subtitle": {
+      "id": "Dua puluh enam Naskah Akademik, Rancangan Peraturan Daerah, dan Policy Brief untuk pemerintah daerah.",
+      "en": "Twenty-six Academic Manuscripts, Regional Regulation drafts, and Policy Briefs for local governments."
+    }
+  },
+  "mengajar": {
+    "eyebrow": {
+      "id": "10 / Pengajaran",
+      "en": "10 / Teaching"
+    },
+    "title": {
+      "id": "Mata Kuliah Diampu",
+      "en": "Courses Taught"
+    },
+    "subtitle": {
+      "id": "Empat belas mata kuliah pada rumpun kebijakan publik, tata kelola pemerintahan, dan metodologi.",
+      "en": "Fourteen courses across public policy, governance, and research methodology."
+    }
+  },
+  "skills": {
+    "eyebrow": {
+      "id": "11 / Kompetensi",
+      "en": "11 / Competencies"
+    },
+    "title": {
+      "id": "Bidang Keahlian",
+      "en": "Areas of Expertise"
+    },
+    "subtitle": {
+      "id": "Kepakaran yang menopang pengajaran, penelitian, dan konsultansi kebijakan.",
+      "en": "The expertise underpinning teaching, research, and policy consultancy."
+    }
+  },
+  "education": {
+    "eyebrow": {
+      "id": "12 / Pendidikan",
+      "en": "12 / Education"
+    },
+    "title": {
+      "id": "Riwayat Pendidikan",
+      "en": "Education"
+    },
+    "subtitle": {
+      "id": "Pendidikan sarjana dan magister pada bidang Administrasi Publik.",
+      "en": "Bachelor's and master's education in Public Administration."
+    }
+  },
+  "certifications": {
+    "eyebrow": {
+      "id": "13 / Kredensial",
+      "en": "13 / Credentials"
+    },
+    "title": {
+      "id": "Sertifikasi",
+      "en": "Certifications"
+    },
+    "subtitle": {
+      "id": "Sertifikasi profesi dan pelatihan yang menunjang praktik akademik.",
+      "en": "Professional certifications and training supporting academic practice."
+    }
+  },
+  "projects": {
+    "eyebrow": {
+      "id": "14 / Karya",
+      "en": "14 / Work"
+    },
+    "title": {
+      "id": "Proyek",
+      "en": "Projects"
+    },
+    "subtitle": {
+      "id": "Kegiatan dan karya lain di luar tridharma.",
+      "en": "Other work and initiatives beyond the core academic duties."
+    }
+  },
+  "volunteering": {
+    "eyebrow": {
+      "id": "15 / Kontribusi",
+      "en": "15 / Contribution"
+    },
+    "title": {
+      "id": "Kesukarelawanan",
+      "en": "Volunteering"
+    },
+    "subtitle": {
+      "id": "Keterlibatan sukarela pada organisasi dan kegiatan kemasyarakatan.",
+      "en": "Voluntary involvement in organisations and community activities."
+    }
+  },
+  "gallery": {
+    "eyebrow": {
+      "id": "16 / Dokumentasi",
+      "en": "16 / Documentation"
+    },
+    "title": {
+      "id": "Galeri",
+      "en": "Gallery"
+    },
+    "subtitle": {
+      "id": "Dokumentasi kegiatan penelitian, pengabdian, dan seminar.",
+      "en": "Documentation of research, community service, and conference activities."
+    }
+  },
+  "blog": {
+    "eyebrow": {
+      "id": "17 / Catatan",
+      "en": "17 / Notes"
+    },
+    "title": {
+      "id": "Tulisan",
+      "en": "Writing"
+    },
+    "subtitle": {
+      "id": "Catatan singkat seputar kebijakan publik, riset, dan kegiatan akademik.",
+      "en": "Short notes on public policy, research, and academic activity."
+    }
+  },
+  "contact": {
+    "eyebrow": {
+      "id": "18 / Kontak",
+      "en": "18 / Contact"
+    },
+    "title": {
+      "id": "Hubungi Saya",
+      "en": "Get in Touch"
+    },
+    "subtitle": {
+      "id": "Terbuka untuk kolaborasi riset, kajian kebijakan daerah, dan undangan sebagai pemakalah.",
+      "en": "Open to research collaboration, local policy studies, and speaking invitations."
+    }
+  }
+}

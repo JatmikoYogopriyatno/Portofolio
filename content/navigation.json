@@ -1,0 +1,77 @@
+{
+  "items": [
+    {
+      "id": "about",
+      "type": "section",
+      "label": {
+        "id": "Tentang",
+        "en": "About"
+      }
+    },
+    {
+      "id": "experience",
+      "type": "section",
+      "label": {
+        "id": "Tridharma",
+        "en": "Tridharma"
+      }
+    },
+    {
+      "id": "penelitian",
+      "type": "section",
+      "label": {
+        "id": "Penelitian",
+        "en": "Research"
+      }
+    },
+    {
+      "id": "publications",
+      "type": "section",
+      "label": {
+        "id": "Publikasi",
+        "en": "Publications"
+      }
+    },
+    {
+      "id": "buku",
+      "type": "section",
+      "label": {
+        "id": "Buku",
+        "en": "Books"
+      }
+    },
+    {
+      "id": "kebijakan",
+      "type": "section",
+      "label": {
+        "id": "Kebijakan",
+        "en": "Policy"
+      }
+    },
+    {
+      "id": "education",
+      "type": "section",
+      "label": {
+        "id": "Pendidikan",
+        "en": "Education"
+      }
+    },
+    {
+      "id": "blog",
+      "type": "page",
+      "href": "/blog/",
+      "label": {
+        "id": "Tulisan",
+        "en": "Writing"
+      }
+    },
+    {
+      "id": "contact",
+      "type": "section",
+      "label": {
+        "id": "Kontak",
+        "en": "Contact"
+      }
+    }
+  ]
+}

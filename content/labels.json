@@ -1,0 +1,290 @@
+{
+  "skipToContent": {
+    "id": "Lompat ke konten utama",
+    "en": "Skip to main content"
+  },
+  "openMenu": {
+    "id": "Buka menu navigasi",
+    "en": "Open navigation menu"
+  },
+  "closeMenu": {
+    "id": "Tutup menu navigasi",
+    "en": "Close navigation menu"
+  },
+  "switchLanguage": {
+    "id": "Ganti bahasa",
+    "en": "Switch language"
+  },
+  "themeToLight": {
+    "id": "Ganti ke mode terang",
+    "en": "Switch to light mode"
+  },
+  "themeToDark": {
+    "id": "Ganti ke mode gelap",
+    "en": "Switch to dark mode"
+  },
+  "ctaContact": {
+    "id": "Hubungi Saya",
+    "en": "Contact Me"
+  },
+  "ctaResume": {
+    "id": "Unduh CV",
+    "en": "Download CV"
+  },
+  "scrollCue": {
+    "id": "Gulir ke bawah",
+    "en": "Scroll down"
+  },
+  "readMore": {
+    "id": "Selengkapnya",
+    "en": "Read more"
+  },
+  "readLess": {
+    "id": "Ringkas",
+    "en": "Show less"
+  },
+  "readAbstract": {
+    "id": "Baca abstrak",
+    "en": "Read abstract"
+  },
+  "hideAbstract": {
+    "id": "Tutup abstrak",
+    "en": "Hide abstract"
+  },
+  "viewPublication": {
+    "id": "Baca publikasi",
+    "en": "Read publication"
+  },
+  "viewCredential": {
+    "id": "Lihat kredensial",
+    "en": "View credential"
+  },
+  "allTag": {
+    "id": "Semua",
+    "en": "All"
+  },
+  "filterLabel": {
+    "id": "Saring proyek berdasarkan tag",
+    "en": "Filter projects by tag"
+  },
+  "copyEmail": {
+    "id": "Salin alamat email",
+    "en": "Copy email address"
+  },
+  "copied": {
+    "id": "Tersalin!",
+    "en": "Copied!"
+  },
+  "servicesTitle": {
+    "id": "Layanan yang Ditawarkan",
+    "en": "Services Offered"
+  },
+  "languagesTitle": {
+    "id": "Bahasa",
+    "en": "Languages"
+  },
+  "backToTop": {
+    "id": "Kembali ke atas",
+    "en": "Back to top"
+  },
+  "printPage": {
+    "id": "Simpan sebagai PDF",
+    "en": "Save as PDF"
+  },
+  "galleryTitle": {
+    "id": "Sekilas Kegiatan",
+    "en": "A Look at the Work"
+  },
+  "galleryHint": {
+    "id": "Klik gambar untuk melihat lebih besar",
+    "en": "Click an image to view it larger"
+  },
+  "lightboxClose": {
+    "id": "Tutup gambar",
+    "en": "Close image"
+  },
+  "lightboxPrev": {
+    "id": "Gambar sebelumnya",
+    "en": "Previous image"
+  },
+  "lightboxNext": {
+    "id": "Gambar berikutnya",
+    "en": "Next image"
+  },
+  "lightboxDownload": {
+    "id": "Unduh berkas ini",
+    "en": "Download this file"
+  },
+  "videoPlay": {
+    "id": "Putar video",
+    "en": "Play video"
+  },
+  "videoUnsupported": {
+    "id": "Peramban kamu belum bisa memutar video ini.",
+    "en": "Your browser cannot play this video."
+  },
+  "galleryMore": {
+    "id": "Muat lebih banyak",
+    "en": "Load more"
+  },
+  "galleryCount": {
+    "id": "foto",
+    "en": "photos"
+  },
+  "attachments": {
+    "id": "Berkas terkait",
+    "en": "Related files"
+  },
+  "downloadFile": {
+    "id": "Unduh",
+    "en": "Download"
+  },
+  "imageZoom": {
+    "id": "Perbesar gambar",
+    "en": "Enlarge image"
+  },
+  "searchOpen": {
+    "id": "Buka pencarian cepat",
+    "en": "Open quick search"
+  },
+  "searchPlaceholder": {
+    "id": "Cari bagian, proyek, atau tulisan...",
+    "en": "Search sections, projects, or posts..."
+  },
+  "searchEmpty": {
+    "id": "Tidak ada hasil yang cocok.",
+    "en": "Nothing matched your search."
+  },
+  "searchHintNavigate": {
+    "id": "pilih",
+    "en": "navigate"
+  },
+  "searchHintOpen": {
+    "id": "buka",
+    "en": "open"
+  },
+  "searchHintClose": {
+    "id": "tutup",
+    "en": "close"
+  },
+  "searchGroupSections": {
+    "id": "Bagian halaman",
+    "en": "Page sections"
+  },
+  "searchGroupProjects": {
+    "id": "Proyek",
+    "en": "Projects"
+  },
+  "searchGroupPosts": {
+    "id": "Tulisan",
+    "en": "Writing"
+  },
+  "searchGroupSocial": {
+    "id": "Tautan",
+    "en": "Links"
+  },
+  "searchGroupActions": {
+    "id": "Tindakan",
+    "en": "Actions"
+  },
+  "searchActionTheme": {
+    "id": "Ganti mode terang atau gelap",
+    "en": "Toggle light or dark mode"
+  },
+  "searchActionLanguage": {
+    "id": "Ganti bahasa ID atau EN",
+    "en": "Switch language ID or EN"
+  },
+  "searchActionPrint": {
+    "id": "Simpan halaman sebagai PDF",
+    "en": "Save the page as PDF"
+  },
+  "searchActionResume": {
+    "id": "Buka CV",
+    "en": "Open CV"
+  },
+  "blogAll": {
+    "id": "Lihat semua tulisan",
+    "en": "View all writing"
+  },
+  "blogBack": {
+    "id": "Kembali ke blog",
+    "en": "Back to blog"
+  },
+  "blogHome": {
+    "id": "Kembali ke beranda",
+    "en": "Back to home"
+  },
+  "blogEmpty": {
+    "id": "Belum ada tulisan yang terbit. Sebentar lagi ya.",
+    "en": "No posts published yet. Coming soon."
+  },
+  "blogReadPost": {
+    "id": "Baca tulisan",
+    "en": "Read post"
+  },
+  "blogMinutes": {
+    "id": "menit baca",
+    "en": "min read"
+  },
+  "blogPublished": {
+    "id": "Terbit",
+    "en": "Published"
+  },
+  "blogRelated": {
+    "id": "Tulisan lainnya",
+    "en": "More writing"
+  },
+  "blogShare": {
+    "id": "Bagikan tulisan ini",
+    "en": "Share this post"
+  },
+  "shareNative": {
+    "id": "Bagikan lewat perangkat",
+    "en": "Share with your device"
+  },
+  "shareCopyLink": {
+    "id": "Salin tautan tulisan",
+    "en": "Copy post link"
+  },
+  "blogFilterLabel": {
+    "id": "Saring tulisan berdasarkan topik",
+    "en": "Filter posts by topic"
+  },
+  "builtWith": {
+    "id": "",
+    "en": ""
+  },
+  "rights": {
+    "id": "",
+    "en": "All rights reserved."
+  },
+  "unduhPortofolio": {
+    "id": "Portofolio PDF",
+    "en": "Portfolio PDF"
+  },
+  "unduhCV": {
+    "id": "CV ATS",
+    "en": "ATS CV"
+  },
+  "unduhCVPeneliti": {
+    "id": "CV Peneliti",
+    "en": "Researcher CV"
+  },
+  "berkasJudul": {
+    "id": "Unduh Dokumen",
+    "en": "Download Documents"
+  },
+  "berkasEyebrow": {
+    "id": "Berkas",
+    "en": "Documents"
+  },
+  "berkasSubjudul": {
+    "id": "Tiga bentuk berkas untuk tiga keperluan berbeda. Pilih salah satu, lalu simpan sebagai PDF lewat tombol di atas halamannya.",
+    "en": "Three document formats for three different purposes. Pick one, then save it as PDF using the button at the top of the page."
+  },
+  "berkasBuka": {
+    "id": "Buka dokumen",
+    "en": "Open document"
+  }
+}

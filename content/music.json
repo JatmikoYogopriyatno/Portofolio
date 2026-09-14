@@ -1,0 +1,12 @@
+{
+  "enabled": false,
+  "title": {
+    "id": "Musik pilihan",
+    "en": "Selected music"
+  },
+  "note": {
+    "id": "",
+    "en": ""
+  },
+  "tracks": []
+}

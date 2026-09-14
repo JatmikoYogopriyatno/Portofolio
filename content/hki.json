@@ -1,0 +1,40 @@
+{
+  "items": [
+    {
+      "tahun": "2023",
+      "judul": "Kearsipan",
+      "jenis": "Buku",
+      "nomor": "EC00202408782, 25 Januari 2024"
+    },
+    {
+      "tahun": "2023",
+      "judul": "Sistem Administrasi Negara Republik Indonesia",
+      "jenis": "Buku",
+      "nomor": "EC00202408853, 25 Januari 2024"
+    },
+    {
+      "tahun": "2023",
+      "judul": "Manajemen Sumber Daya Manusia",
+      "jenis": "Buku",
+      "nomor": "EC00202408778, 25 Januari 2024"
+    },
+    {
+      "tahun": "2024",
+      "judul": "Kebijakan Publik: Dari Teori ke Praktik",
+      "jenis": "Buku",
+      "nomor": "EC00202456697, 4 Juni 2024"
+    },
+    {
+      "tahun": "2025",
+      "judul": "Kebijakan Publik",
+      "jenis": "Buku",
+      "nomor": "EC002025163294, 25 Oktober 2025"
+    },
+    {
+      "tahun": "2025",
+      "judul": "Pengembangan Metode Komplain Pelayanan Publik Berbasis Partisipasi Masyarakat",
+      "jenis": "Poster",
+      "nomor": "EC002025226655, 26 Desember 2025"
+    }
+  ]
+}

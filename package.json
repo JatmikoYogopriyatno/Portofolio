@@ -1,0 +1,33 @@
+{
+  "name": "portofolio-jatmiko-yogopriyatno",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portofolio akademik Jatmiko Yogopriyatno, S.IP., M.Si. Next.js",
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "predev": "node scripts/copy-cms.mjs && node scripts/generate-favicon.mjs && node scripts/generate-og.mjs",
+    "build": "next build",
+    "prebuild": "node scripts/copy-cms.mjs && node scripts/generate-favicon.mjs && node scripts/generate-og.mjs",
+    "start": "next start",
+    "assets": "node --no-warnings scripts/generate-assets.mjs",
+    "placeholders": "node --no-warnings scripts/generate-placeholders.mjs",
+    "og": "node scripts/generate-og.mjs",
+    "ikon": "node scripts/generate-favicon.mjs",
+    "kecilkan-media": "node scripts/shrink-media.mjs"
+  },
+  "dependencies": {
+    "marked": "^18.0.11",
+    "next": "16.3.4",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "sharp": "0.35.4"
+  },
+  "devDependencies": {
+    "@sveltia/cms": "0.205.4",
+    "@tailwindcss/postcss": "4.3.3",
+    "tailwindcss": "4.3.3"
+  }
+}

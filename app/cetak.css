@@ -1,0 +1,680 @@
+/* ==========================================================================
+ *  GAYA DOKUMEN CETAK
+ * --------------------------------------------------------------------------
+ *  Dipakai oleh tiga halaman:
+ *
+ *    /cetak/portofolio/   dokumen portofolio lengkap, rapi dan berwarna
+ *    /cetak/cv/           CV satu kolom yang terbaca mesin pelacak lamaran
+ *    /cetak/cv-peneliti/  Daftar Riwayat Hidup bertabel untuk pengajuan riset
+ *
+ *  Keduanya sengaja tidak memakai token warna situs. Dokumen ini hitam di atas
+ *  putih, apa pun tema yang sedang dipakai pengunjung, karena hasil akhirnya
+ *  adalah kertas atau berkas PDF.
+ *
+ *  UKURAN KERTAS
+ *  A4 dipilih karena itu ukuran standar di Indonesia dan hampir seluruh dunia
+ *  kecuali Amerika Utara. Margin diatur di sini, bukan di dialog cetak, supaya
+ *  hasilnya sama siapa pun yang mencetak.
+ * ========================================================================== */
+
+@page {
+  size: A4;
+  margin: 16mm 15mm;
+}
+
+/* Halaman CV dibuat sedikit lebih lapang di sisi kiri kanan, mengikuti
+   kebiasaan dokumen lamaran kerja. */
+@page cv {
+  size: A4;
+  margin: 15mm 16mm;
+}
+
+/* --------------------------------------------------------------------------
+ *  KERANGKA BERSAMA
+ * -------------------------------------------------------------------------- */
+
+.dok {
+  /* Lebar kertas A4 dikurangi margin, jadi tampilan di layar sama persis
+     dengan hasil cetaknya. Tidak ada kejutan saat menekan tombol simpan. */
+  max-width: 180mm;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+  color: #111827;
+  background: #ffffff;
+  font-size: 10.5pt;
+  line-height: 1.55;
+}
+
+/* Di layar, dokumen diberi bingkai lembut supaya terbaca sebagai lembar
+   kertas. Bingkai ini hilang saat dicetak. */
+.dok-lembar {
+  min-height: 100svh;
+  background: #f1f5f9;
+}
+
+.dok-kertas {
+  background: #ffffff;
+  box-shadow: 0 10px 40px -20px rgba(15, 23, 42, 0.35);
+}
+
+/* Bilah tombol di atas dokumen. Tidak pernah ikut tercetak. */
+.dok-bilah {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  /* Biru tinta, sewarna dengan tema situs. Bilah ini memang bukan bagian
+     dokumen dan tidak ikut tercetak, tapi pengunjung melihatnya bersamaan
+     dengan dokumennya, jadi warnanya tidak boleh berasal dari tema lain. */
+  background: #16202e;
+  color: #e4e7ec;
+  font-size: 0.8125rem;
+}
+
+.dok-bilah a,
+.dok-bilah button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.25rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid rgba(226, 232, 240, 0.28);
+  border-radius: 999px;
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.dok-bilah button {
+  background: #2f5580;
+  border-color: #2f5580;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.dok-bilah button:hover {
+  background: #3a6698;
+  border-color: #3a6698;
+}
+
+.dok-bilah .dok-bilah-kiri,
+.dok-bilah .dok-bilah-kanan {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+/* --------------------------------------------------------------------------
+ *  DOKUMEN PORTOFOLIO
+ * -------------------------------------------------------------------------- */
+
+.dok-kepala {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #1d3557;
+}
+
+.dok-foto {
+  width: 26mm;
+  height: 26mm;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 3mm;
+  border: 1px solid #d1d5db;
+}
+
+.dok-nama {
+  margin: 0;
+  font-size: 20pt;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  color: #0f172a;
+}
+
+.dok-headline {
+  margin: 0.35rem 0 0;
+  font-size: 10.5pt;
+  color: #374151;
+}
+
+.dok-kontak {
+  margin: 0.55rem 0 0;
+  font-size: 9pt;
+  color: #4b5563;
+  word-break: break-word;
+}
+
+.dok-kontak span + span::before {
+  content: '  ·  ';
+  color: #9ca3af;
+}
+
+.dok-bagian {
+  margin-top: 1.35rem;
+  /* Judul bagian tidak boleh sendirian di dasar halaman. */
+  break-inside: auto;
+}
+
+.dok-judul {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.7rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 10pt;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #1d3557;
+  break-after: avoid;
+}
+
+.dok-judul::before {
+  content: '';
+  width: 3px;
+  height: 0.95em;
+  background: #1d3557;
+  border-radius: 2px;
+}
+
+/* Satu entri: pengalaman, pendidikan, proyek, dan sejenisnya. */
+.dok-entri {
+  margin-bottom: 0.95rem;
+  /* Satu entri utuh tidak boleh terbelah dua halaman. Ini yang membuat
+     dokumennya terbaca rapi, bukan terpotong di tengah kalimat. */
+  break-inside: avoid;
+}
+
+.dok-entri:last-child {
+  margin-bottom: 0;
+}
+
+.dok-baris {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.dok-peran {
+  margin: 0;
+  font-size: 11pt;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.dok-waktu {
+  flex-shrink: 0;
+  font-size: 8.5pt;
+  font-weight: 600;
+  color: #4b5563;
+  white-space: nowrap;
+}
+
+.dok-org {
+  margin: 0.1rem 0 0;
+  font-size: 9.5pt;
+  font-weight: 600;
+  color: #1d3557;
+}
+
+.dok-teks {
+  margin: 0.35rem 0 0;
+  color: #374151;
+  /* Sengaja rata kiri, bukan rata kanan kiri. Teks rata kanan kiri pada kolom
+     selebar ini meninggalkan celah lebar tak beraturan di antara kata, dan itu
+     justru membuatnya lebih lelah dibaca. */
+  text-align: left;
+}
+
+.dok-tag {
+  margin: 0.4rem 0 0;
+  font-size: 8.5pt;
+  color: #4b5563;
+}
+
+.dok-tag strong {
+  color: #374151;
+}
+
+.dok-daftar {
+  margin: 0.3rem 0 0;
+  padding-left: 1.1rem;
+  list-style: disc;
+}
+
+.dok-daftar li {
+  margin-bottom: 0.18rem;
+  color: #374151;
+}
+
+/* Dua kolom untuk daftar pendek seperti sertifikasi. Dipakai hanya di dokumen
+   portofolio, tidak pernah di CV, karena kolom mengacaukan pembacaan mesin. */
+.dok-dua-kolom {
+  column-count: 2;
+  column-gap: 1.5rem;
+}
+
+.dok-dua-kolom > * {
+  break-inside: avoid;
+}
+
+.dok-catatan-kaki {
+  margin-top: 1.75rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid #e5e7eb;
+  font-size: 8pt;
+  color: #6b7280;
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+ *  DOKUMEN CV, GAYA HARVARD DAN RAMAH MESIN PELACAK LAMARAN
+ * --------------------------------------------------------------------------
+ *  Aturan yang dipatuhi di sini, semuanya disengaja:
+ *
+ *    satu kolom       mesin membaca dari atas ke bawah, kolom mengacaukannya
+ *    tanpa tabel      isi tabel sering terbaca berantakan atau terlewat
+ *    tanpa gambar     foto dan logo tidak terbaca sama sekali, hanya menyita ruang
+ *    huruf umum       Arial ada di semua sistem, tidak perlu disulih
+ *    judul baku       PENDIDIKAN, PENGALAMAN, dan seterusnya, mudah dikenali
+ *    teks sungguhan   bukan gambar teks, jadi bisa disalin dan dicari
+ * -------------------------------------------------------------------------- */
+
+.cv {
+  max-width: 178mm;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+  background: #ffffff;
+  color: #000000;
+  /* Arial lebih dulu karena itu huruf paling aman untuk mesin pelacak. */
+  font-family: Arial, Helvetica, 'Liberation Sans', sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.4;
+}
+
+.cv-nama {
+  margin: 0;
+  font-size: 17pt;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.cv-kontak {
+  margin: 0.3rem 0 0;
+  font-size: 9.5pt;
+  text-align: center;
+}
+
+/*
+  Tautan di dalam CV.
+
+  Warnanya diwarisi, jadi tetap hitam. Ini disengaja. CV gaya Harvard memakai
+  satu tinta saja, dan tautan biru bergaris bawah membuat berkasnya terlihat
+  seperti tangkapan layar halaman web, bukan dokumen lamaran. Alamatnya tetap
+  tertanam sebagai tautan sungguhan, jadi di dalam PDF tetap bisa diklik.
+
+  Warna dan garis bawah berlaku untuk semua tautan di dalam CV, termasuk judul
+  publikasi dan nama sertifikat.
+*/
+.cv-tautan {
+  color: inherit;
+  text-decoration: none;
+}
+
+/*
+  Larangan patah baris HANYA untuk alamat di bagian identitas.
+
+  Ini yang membereskan keluhan aslinya. Sebelumnya .cv-kontak memakai
+  word-break: break-word, dan alamat sepanjang
+  scholar.google.com/citations?user=PW0IcAsAAAAJ&hl=en dipatahkan di tengah
+  tengah kata sehingga tidak bisa disalin maupun diklik.
+
+  Aturannya sengaja dibatasi ke .cv-kontak saja. Sempat dipasang ke seluruh
+  .cv-tautan, dan akibatnya judul publikasi yang panjang ikut dilarang patah:
+  satu judul melar jadi 927 piksel dan mendorong halaman CV melebar ke samping
+  di layar ponsel. Nama dan judul harus tetap boleh berpindah baris, yang tidak
+  boleh dipatahkan cuma alamat.
+*/
+.cv-kontak .cv-tautan,
+.cv-utuh {
+  white-space: nowrap;
+}
+
+/*
+  Pemisah sengaja jadi elemen tersendiri, bukan ::before pada tiap butir.
+
+  Kalau pemisahnya menempel di dalam butir yang nowrap, dia ikut pindah baris
+  dan barisnya jadi dimulai dengan tanda garis tegak. Sebagai elemen sendiri,
+  patahan barisnya jatuh pada spasi sesudah pemisah, jadi tanda itu tetap
+  tinggal di ujung baris sebelumnya seperti kebiasaan penulisan pada umumnya.
+*/
+.cv-pemisah {
+  white-space: normal;
+}
+
+.cv-bagian {
+  margin-top: 1.05rem;
+}
+
+.cv-judul {
+  margin: 0 0 0.4rem;
+  padding-bottom: 0.15rem;
+  border-bottom: 1px solid #000000;
+  font-size: 11pt;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  break-after: avoid;
+}
+
+.cv-entri {
+  margin-bottom: 0.7rem;
+  break-inside: avoid;
+}
+
+.cv-entri:last-child {
+  margin-bottom: 0;
+}
+
+.cv-baris {
+  display: flex;
+  gap: 0.75rem;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.cv-utama {
+  font-weight: 700;
+}
+
+.cv-waktu {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.cv-kedua {
+  font-style: italic;
+}
+
+.cv-daftar {
+  margin: 0.2rem 0 0;
+  padding-left: 1.15rem;
+  list-style: disc;
+}
+
+.cv-daftar li {
+  margin-bottom: 0.12rem;
+}
+
+.cv-padat {
+  margin: 0.1rem 0 0;
+}
+
+/* --------------------------------------------------------------------------
+ *  SAAT DICETAK
+ * -------------------------------------------------------------------------- */
+
+@media print {
+  .dok-lembar {
+    background: #ffffff;
+  }
+
+  .dok-kertas {
+    box-shadow: none;
+  }
+
+  .dok-bilah,
+  [data-cetak='sembunyi'] {
+    display: none !important;
+  }
+
+  .dok,
+  .cv {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Warna aksen tetap dicetak. Tanpa ini sebagian peramban membuang seluruh
+     warna latar dan garis, dan dokumennya jadi datar. */
+  .dok,
+  .cv {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+ *  DAFTAR RIWAYAT HIDUP PENELITI  (/cetak/cv-peneliti/)
+ * --------------------------------------------------------------------------
+ *  Bentuknya mengikuti berkas Daftar Riwayat Hidup yang dipakai pengajuan
+ *  penelitian. Dua hal yang membedakannya dari CV ATS di atas:
+ *
+ *    bertabel       reviewer membandingkan antarbaris, dan tabel yang paling
+ *                   cepat menjawab itu. Mesin pelacak lamaran tidak pernah
+ *                   membaca berkas ini, jadi larangan tabel di sana tidak
+ *                   berlaku di sini.
+ *    huruf berkait  terbitan ilmiah dan dokumen resmi memakai huruf berkait,
+ *                   dan berkas ini dibaca dalam konteks itu.
+ *
+ *  UKURAN HURUF
+ *  9pt, lebih kecil daripada 10,5pt di dua dokumen lain. Isinya jauh lebih
+ *  banyak, dan pada ukuran ini satu tabel penelitian yang sepuluh baris masih
+ *  muat dalam satu halaman tanpa terpotong.
+ * -------------------------------------------------------------------------- */
+
+.drh {
+  max-width: 180mm;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+  background: #ffffff;
+  color: #000000;
+  font-family: 'Times New Roman', Times, Georgia, serif;
+  font-size: 9pt;
+  line-height: 1.4;
+}
+
+.drh-nama {
+  margin: 0 0 1.4rem;
+  font-size: 14pt;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.drh-bagian {
+  margin-top: 1.1rem;
+  /* Judul bagian tidak boleh tertinggal sendirian di dasar halaman, terpisah
+     dari tabel yang diterangkannya. */
+  break-inside: auto;
+}
+
+.drh-judul {
+  margin: 0 0 0.4rem;
+  font-size: 10pt;
+  font-weight: 700;
+  line-height: 1.35;
+  break-after: avoid;
+}
+
+.drh-huruf {
+  display: inline-block;
+  min-width: 1.1rem;
+}
+
+.drh-catatan {
+  margin: -0.25rem 0 0.4rem 1.1rem;
+  font-size: 8.5pt;
+  font-style: italic;
+}
+
+/*
+  TABELNYA BERGARIS PENUH
+
+  Di layar, garis kotak di tiap sel biasanya berlebihan. Di sini tidak: berkas
+  aslinya memang begitu, dan yang membacanya membandingkan berkas ini dengan
+  berkas pelamar lain yang bentuknya sama persis. Kemiripan itu ada gunanya.
+*/
+.drh-tabel {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.drh-tabel th,
+.drh-tabel td {
+  border: 0.5pt solid #000000;
+  padding: 0.2rem 0.3rem;
+  vertical-align: top;
+  text-align: left;
+  /*
+    Judul penelitian dan nama naskah akademik sering panjang tanpa spasi yang
+    pas, dan kolomnya sempit. Tanpa dua baris ini, kata panjang menembus garis
+    tabel dan menimpa kolom sebelahnya.
+  */
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.drh-tabel thead th {
+  font-weight: 700;
+  text-align: center;
+  background: #f2f2f2;
+}
+
+/* Kepala tabel diulang di tiap halaman. Tabel Kebijakan yang dua puluh enam
+   baris hampir pasti terpotong, dan tanpa ini halaman keduanya jadi kolom
+   angka tanpa keterangan. */
+.drh-tabel thead {
+  display: table-header-group;
+}
+
+.drh-tabel tbody tr {
+  /* Satu baris tidak dipotong di tengah tengah antar halaman. */
+  break-inside: avoid;
+}
+
+.drh-no {
+  width: 2.2rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Tabel identitas diri: nomor, nama kolom, isi. */
+.drh-tabel-diri th[scope='row'] {
+  width: 32%;
+  font-weight: 400;
+}
+
+/* Tabel pendidikan: nama baris di kiri, tiga jenjang di kanan. */
+.drh-tabel-pendidikan th[scope='row'] {
+  width: 22%;
+  font-weight: 400;
+}
+
+.drh-tabel-pendidikan thead th {
+  text-align: center;
+}
+
+/* Daftar mata kuliah di dalam satu sel. */
+.drh-daftar-mk {
+  margin: 0;
+  padding-left: 1.1rem;
+  list-style: decimal;
+}
+
+.drh-daftar-mk li {
+  margin: 0;
+}
+
+/*
+  Alamat artikel.
+
+  Ditulis utuh, bukan diganti nama seperti di CV ATS, karena di berkas ini
+  alamatnya yang diperiksa. Aturan patahnya lebih longgar daripada sel biasa
+  supaya alamat sepanjang apa pun tetap masuk kolom.
+*/
+.drh-url {
+  color: inherit;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  word-break: break-all;
+  font-size: 8pt;
+}
+
+/* Pernyataan penutup dan blok tanda tangan. */
+.drh-penutup {
+  margin-top: 1.4rem;
+  break-inside: avoid;
+}
+
+.drh-penutup p {
+  margin: 0;
+  text-align: justify;
+}
+
+.drh-ttd {
+  margin-top: 1.6rem;
+  margin-left: auto;
+  width: 62mm;
+  text-align: left;
+}
+
+.drh-ttd p {
+  margin: 0;
+  text-align: left;
+}
+
+/* Ruang untuk membubuhkan tanda tangan setelah dicetak. */
+.drh-ttd-nama {
+  margin-top: 18mm !important;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .drh {
+    padding: 1.5rem 0.75rem 3rem;
+    font-size: 8.5pt;
+  }
+
+  /*
+    Tabel Daftar Riwayat Hidup tidak ditumpuk seperti tabel di halaman utama.
+    Berkas ini bentuknya memang tabel dan itu bagian dari isinya, jadi yang
+    dilakukan cuma membiarkannya digulir ke samping dalam bingkainya sendiri.
+    Pembacanya hampir selalu membuka ini di layar besar atau langsung menyimpan
+    sebagai PDF.
+  */
+  .drh-tabel {
+    table-layout: auto;
+  }
+}
+
+@media print {
+  .drh {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "items": [
+    {
+      "value": "26",
+      "label": {
+        "id": "Publikasi Ilmiah",
+        "en": "Scholarly Publications"
+      },
+      "icon": "book"
+    },
+    {
+      "value": "26",
+      "label": {
+        "id": "Naskah Akademik & Policy Brief",
+        "en": "Academic Manuscripts & Policy Briefs"
+      },
+      "icon": "file-text"
+    },
+    {
+      "value": "10",
+      "label": {
+        "id": "Karya Buku",
+        "en": "Authored Books"
+      },
+      "icon": "award"
+    },
+    {
+      "value": "15",
+      "label": {
+        "id": "Pemakalah Seminar",
+        "en": "Conference Papers"
+      },
+      "icon": "briefcase"
+    }
+  ]
+}

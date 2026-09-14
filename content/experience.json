@@ -1,0 +1,148 @@
+{
+  "items": [
+    {
+      "role": {
+        "id": "Dosen Tetap (Lektor)",
+        "en": "Permanent Lecturer (Lektor)"
+      },
+      "org": {
+        "id": "Jurusan Administrasi Publik, FISIP Universitas Bengkulu",
+        "en": "Department of Public Administration, FISIP University of Bengkulu"
+      },
+      "type": {
+        "id": "Pendidikan Tinggi",
+        "en": "Higher Education"
+      },
+      "period": {
+        "id": "2019 - sekarang",
+        "en": "2019 - present"
+      },
+      "location": "Bengkulu, Indonesia",
+      "description": {
+        "id": "Mengampu empat belas mata kuliah pada rumpun kebijakan publik, tata kelola pemerintahan, dan metodologi, di antaranya Analisis Kebijakan Publik, Sistem Administrasi Negara RI, Reformasi Birokrasi, Birokrasi dan E-Government, serta Pengantar Statistik Sosial. Membimbing dan meluluskan tiga puluh mahasiswa program sarjana dan sepuluh mahasiswa program diploma.",
+        "en": "Teaching fourteen courses across public policy, governance, and research methods, including Public Policy Analysis, the Indonesian State Administration System, Bureaucratic Reform, Bureaucracy and E-Government, and Introduction to Social Statistics. Supervised thirty bachelor's and ten diploma students through to graduation."
+      },
+      "skills": [
+        "Pengajaran",
+        "Pembimbingan Akademik",
+        "Kebijakan Publik"
+      ],
+      "image": "",
+      "imageAlt": {
+        "id": "",
+        "en": ""
+      },
+      "logo": "",
+      "files": [],
+      "highlight": true
+    },
+    {
+      "role": {
+        "id": "Penyusun Naskah Akademik dan Rancangan Peraturan Daerah",
+        "en": "Drafter of Academic Manuscripts and Regional Regulations"
+      },
+      "org": {
+        "id": "Pemerintah Kota Lubuklinggau, Pemerintah Kabupaten Musi Rawas, BKKBN Perwakilan Provinsi Bengkulu",
+        "en": "Lubuklinggau City Government, Musi Rawas Regency Government, BKKBN Bengkulu Province"
+      },
+      "type": {
+        "id": "Konsultansi Kebijakan",
+        "en": "Policy Consultancy"
+      },
+      "period": {
+        "id": "2023 - sekarang",
+        "en": "2023 - present"
+      },
+      "location": "Sumatera Selatan dan Bengkulu",
+      "description": {
+        "id": "Menyusun dua puluh enam dokumen kebijakan daerah, mencakup Naskah Akademik dan Rancangan Peraturan Daerah pada bidang pengelolaan persampahan, pelayanan publik, keterbukaan informasi publik, sistem pemerintahan berbasis elektronik, penanganan stunting, perlindungan perempuan dan anak, kearsipan, keolahragaan, serta pemajuan kebudayaan daerah. Seluruh dokumen diterima baik oleh pemerintah daerah pengguna.",
+        "en": "Prepared twenty-six local policy documents, covering Academic Manuscripts and Regional Regulation drafts on waste management, public service, public information transparency, electronic-based government, stunting response, protection of women and children, archives, sport, and regional cultural advancement. All documents were well received by the commissioning local governments."
+      },
+      "skills": [
+        "Naskah Akademik",
+        "Legislasi Daerah",
+        "Policy Brief"
+      ],
+      "image": "",
+      "imageAlt": {
+        "id": "",
+        "en": ""
+      },
+      "logo": "",
+      "files": [],
+      "highlight": true
+    },
+    {
+      "role": {
+        "id": "Ketua dan Anggota Peneliti",
+        "en": "Principal Investigator and Research Member"
+      },
+      "org": {
+        "id": "PNBP FISIP, LPPM Universitas Bengkulu, Hibah Fundamental UNIB",
+        "en": "PNBP FISIP, LPPM University of Bengkulu, UNIB Fundamental Grant"
+      },
+      "type": {
+        "id": "Penelitian",
+        "en": "Research"
+      },
+      "period": {
+        "id": "2021 - sekarang",
+        "en": "2021 - present"
+      },
+      "location": "Provinsi Bengkulu dan Sumatera Selatan",
+      "description": {
+        "id": "Memimpin tujuh dari sepuluh penelitian dalam lima tahun terakhir. Kajiannya bergerak dari evaluasi program pendidikan dan pelayanan perizinan daerah, menuju tema yang lebih struktural: kesiapan Smart Village, determinan kebijakan stunting, pemodelan system dynamics untuk pengelolaan sampah berkelanjutan, serta respon adaptif pemerintah desa terhadap kebijakan nasional.",
+        "en": "Led seven of ten research projects over the past five years. The work moved from evaluating education programmes and local licensing services toward more structural questions: Smart Village readiness, the determinants of stunting policy, system dynamics modelling for sustainable waste management, and village government adaptive response to national policy."
+      },
+      "skills": [
+        "Metodologi Penelitian",
+        "System Dynamics",
+        "Evaluasi Program"
+      ],
+      "image": "",
+      "imageAlt": {
+        "id": "",
+        "en": ""
+      },
+      "logo": "",
+      "files": [],
+      "highlight": true
+    },
+    {
+      "role": {
+        "id": "Pelaksana Pengabdian kepada Masyarakat",
+        "en": "Community Service Lead"
+      },
+      "org": {
+        "id": "FISIP dan LPPM Universitas Bengkulu",
+        "en": "FISIP and LPPM University of Bengkulu"
+      },
+      "type": {
+        "id": "Pengabdian kepada Masyarakat",
+        "en": "Community Service"
+      },
+      "period": {
+        "id": "2021 - sekarang",
+        "en": "2021 - present"
+      },
+      "location": "Bengkulu, Indonesia",
+      "description": {
+        "id": "Melaksanakan tujuh kegiatan pengabdian, lima di antaranya sebagai ketua. Fokusnya pada penguatan kapasitas aparatur dan masyarakat desa: tata kelola desa wisata yang agile adaptive di Kemumu, pengelolaan dana desa berbasis agile government, advokasi kebijakan blue economy di desa pesisir, metode komplain pelayanan publik berbasis partisipasi, sampai penerapan berpikir sistem dalam pengambilan keputusan tingkat desa.",
+        "en": "Delivered seven community service programmes, five as lead. The focus is on building the capacity of village officials and communities: agile adaptive tourism village governance in Kemumu, agile government-based village fund management, blue economy policy advocacy in coastal villages, participation-based public service complaint methods, and systems thinking in village-level decision making."
+      },
+      "skills": [
+        "Pemberdayaan Masyarakat",
+        "Tata Kelola Desa",
+        "Fasilitasi"
+      ],
+      "image": "",
+      "imageAlt": {
+        "id": "",
+        "en": ""
+      },
+      "logo": "",
+      "files": [],
+      "highlight": false
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "enabled": true,
+  "title": {
+    "id": "Masukan dan Korespondensi",
+    "en": "Feedback and Correspondence"
+  },
+  "subtitle": {
+    "id": "Pertanyaan seputar riset, permintaan kolaborasi, atau undangan sebagai pemakalah dapat dikirim melalui formulir ini.",
+    "en": "Questions about research, collaboration requests, or speaking invitations can be sent through this form."
+  },
+  "placeholder": {
+    "id": "Tulis pesan Anda di sini...",
+    "en": "Write your message here..."
+  },
+  "success": {
+    "id": "Terima kasih. Pesan Anda sudah masuk dan akan saya baca.",
+    "en": "Thank you. Your message has been received and I will read it."
+  },
+  "privacy": {
+    "id": "Pesan ini hanya dibaca oleh saya. Nama dan kontak boleh dikosongkan.",
+    "en": "This message is read only by me. Name and contact are optional."
+  }
+}

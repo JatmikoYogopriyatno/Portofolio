@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Placeholder foto profil (640x640), memakai warna tema akademik.
+
+  GANTI DENGAN FOTO ASLI lewat panel, menu Isi Halaman > Halaman Depan >
+  Foto profil. Unggah fotonya di situ dan berkas ini tidak dipakai lagi.
+
+  Ukuran foto yang pas: persegi, minimal 640x640 piksel. Foto formal berlatar
+  polos paling cocok dengan tampilan halaman ini.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="640" height="640" role="img" aria-label="Placeholder foto profil">
+  <defs>
+    <linearGradient id="base" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1d3557"/>
+      <stop offset="100%" stop-color="#0f1720"/>
+    </linearGradient>
+    <radialGradient id="b1" cx="25%" cy="20%" r="65%">
+      <stop offset="0%" stop-color="#2f5580" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#2f5580" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="b2" cx="85%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#1d3557" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#1d3557" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="b3" cx="45%" cy="105%" r="65%">
+      <stop offset="0%" stop-color="#9a7534" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#9a7534" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e6d9bd"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="640" height="640" fill="url(#base)"/>
+  <rect width="640" height="640" fill="url(#b1)"/>
+  <rect width="640" height="640" fill="url(#b2)"/>
+  <rect width="640" height="640" fill="url(#b3)"/>
+
+  <!-- Bingkai -->
+  <rect x="40" y="40" width="560" height="560" rx="72" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.16" stroke-width="1.5"/>
+
+  <!-- Monogram. Huruf berkait, mengikuti judul di halaman. -->
+  <text x="320" y="352" text-anchor="middle" font-family="Georgia,'Times New Roman',Times,serif" font-size="188" font-weight="700" letter-spacing="-4" fill="url(#ink)">JY</text>
+  <rect x="255" y="398" width="130" height="5" rx="2.5" fill="#cfa963"/>
+  <text x="320" y="452" text-anchor="middle" font-family="Georgia,'Times New Roman',Times,serif" font-size="19" font-weight="600" letter-spacing="4" fill="#b8c4d2">JATMIKO YOGOPRIYATNO</text>
+</svg>

@@ -1,0 +1,40 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# Build output
+/.next/
+/out/
+/build
+next-env.d.ts
+
+# Debug & log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Environment
+.env
+.env*.local
+
+# Editor & OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Misc
+*.pem
+.turbo
+
+# Panel konten disalin dari node_modules setiap build, lihat scripts/copy-cms.mjs
+/public/admin/sveltia-cms.js
+
+# Gambar yang diunggah lewat panel konten TIDAK diabaikan.
+# Berkas di public/images/uploads/ sengaja ikut masuk ke Git supaya jadi
+# bagian dari repositori, sama seperti gambar lainnya.
+
+# Kartu preview per tulisan, dibuat ulang otomatis setiap build.
+/public/images/og/

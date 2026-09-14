@@ -1,0 +1,1226 @@
+@import 'tailwindcss';
+
+/* ==========================================================================
+ * 1. PALET WARNA  |  TEMA AKADEMIK
+ * --------------------------------------------------------------------------
+ * Temanya formal: biru tinta tua sebagai warna utama, kuningan tua sebagai
+ * aksen kedua, dan latar kertas hangat, bukan putih layar. Rujukannya terbitan
+ * ilmiah dan dokumen resmi, bukan halaman produk.
+ *
+ * GANTI WARNA AKSEN DI SINI. Tiga variabel --accent-* dipakai gradien teks,
+ * lapisan latar, garis kartu unggulan, dan seluruh efek sorot.
+ *
+ * Contoh tema akademik lain:
+ *   Maroon   : #6b2737 / #8c3b4c / #a1762e   (gaya fakultas hukum)
+ *   Hijau    : #14532d / #1f6b3e / #9a7534   (gaya kehutanan dan pertanian)
+ *   Abu tua  : #1f2933 / #33414f / #8a6a2f   (paling netral)
+ * ========================================================================== */
+:root {
+  /* Warna merek, sama di mode terang maupun gelap. */
+  --accent-1: #1d3557; /* biru tinta  */
+  --accent-2: #2f5580; /* biru sedang */
+  --accent-3: #9a7534; /* kuningan    */
+
+  /* Kecepatan animasi lapisan latar. Diperlambat dari 30 detik supaya
+   * geraknya nyaris tidak terasa. Halaman akademik tidak perlu bergerak. */
+  --blob-speed: 48s;
+
+  /* ---- MODE TERANG (default) ---- */
+  /* Latar sedikit hangat, meniru kertas, bukan putih layar. Bedanya tipis
+   * tetapi terasa saat dibaca lama. */
+  --bg: #f7f5f0;
+  --bg-deep: #eeeae0;
+  --fg: #16202e;
+  --fg-muted: #3d4a5c;
+  --fg-subtle: #5a6879;
+  --accent-fg: #1d3557;
+
+  --glass: rgb(255 255 255 / 0.78);
+  --glass-hover: rgb(255 255 255 / 0.95);
+  --glass-solid: #ffffff;
+  --line: rgb(22 32 46 / 0.12);
+  --line-strong: rgb(22 32 46 / 0.2);
+  --inner-glow: rgb(255 255 255 / 0.9);
+  --shadow-soft: rgb(22 32 46 / 0.09);
+  --shadow-lift: rgb(22 32 46 / 0.15);
+
+  --chip-bg: rgb(22 32 46 / 0.045);
+  --chip-fg: #3d4a5c;
+
+  /* Intensitas lapisan dekoratif latar.
+   * Diturunkan cukup jauh dari templat aslinya. Warna yang berpendar di
+   * belakang teks cocok untuk halaman produk, tidak untuk halaman yang isinya
+   * daftar penelitian dan naskah akademik. Nilai 0 mematikannya sepenuhnya. */
+  --blob-opacity: 0.07;
+  --grid-opacity: 0.03;
+  --dot-opacity: 0.035;
+  --noise-opacity: 0.025;
+
+  color-scheme: light;
+}
+
+/* ---- MODE GELAP ---- */
+[data-theme='dark'] {
+  --bg: #0f1720;
+  --bg-deep: #16202c;
+  --fg: #f3f1ec;
+  --fg-muted: #c3cbd6;
+  --fg-subtle: #91a0b1;
+  /* Di atas biru tua, biru tinta jadi tidak terbaca. Kuningan yang dipakai,
+   * dan rasionya tetap di atas ambang WCAG AA untuk teks kecil. */
+  --accent-fg: #cfa963;
+
+  --glass: rgb(255 255 255 / 0.045);
+  --glass-hover: rgb(255 255 255 / 0.08);
+  --glass-solid: #16202c;
+  --line: rgb(255 255 255 / 0.11);
+  --line-strong: rgb(255 255 255 / 0.2);
+  --inner-glow: rgb(255 255 255 / 0.07);
+  --shadow-soft: rgb(0 0 0 / 0.5);
+  --shadow-lift: rgb(0 0 0 / 0.7);
+
+  --chip-bg: rgb(255 255 255 / 0.055);
+  --chip-fg: #c3cbd6;
+
+  --blob-opacity: 0.1;
+  --grid-opacity: 0.04;
+  --dot-opacity: 0.045;
+  --noise-opacity: 0.04;
+
+  color-scheme: dark;
+}
+
+/* Utility Tailwind (bg-surface, text-fg, border-line, dst) memakai variabel di
+ * atas lewat @theme inline, sehingga ikut berubah saat tema diganti. */
+@theme inline {
+  --font-sans: var(--font-plus-jakarta), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /*
+    Huruf berkait untuk judul.
+
+    Sengaja memakai huruf bawaan sistem, bukan berkas yang diunduh. Georgia ada
+    di Windows, macOS, iOS, dan Android, dan padanannya ada di Linux. Jadi
+    judulnya tampil benar sejak milidetik pertama, tanpa menunggu unduhan dan
+    tanpa pergeseran tata letak saat hurufnya berganti.
+
+    Huruf berkait dipilih karena itu yang dipakai terbitan ilmiah dan dokumen
+    resmi. Bedanya dengan huruf tak berkait terasa langsung: halamannya terbaca
+    sebagai karya akademik, bukan halaman produk.
+  */
+  --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--fg-muted);
+  --color-subtle: var(--fg-subtle);
+  --color-accent: var(--accent-fg);
+  --color-accent-1: var(--accent-1);
+  --color-accent-2: var(--accent-2);
+  --color-accent-3: var(--accent-3);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-surface: var(--glass);
+  --color-surface-solid: var(--glass-solid);
+}
+
+/* ==========================================================================
+ * 2. DASAR
+ * ========================================================================== */
+html {
+  scroll-behavior: smooth;
+  /* Supaya judul section tidak tertutup navbar melayang saat lompat anchor. */
+  scroll-padding-top: 7rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  /* Sedikit lebih besar dari bawaan browser supaya teks panjang nyaman dibaca
+   * tanpa memaksa pengunjung memperbesar halaman. */
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Judul: patahan barisnya diseimbangkan browser, jarak hurufnya dirapatkan
+ * sedikit supaya ukuran besar tetap terlihat padat dan rapi. */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif);
+  text-wrap: balance;
+  /* Huruf berkait tidak perlu dirapatkan sekuat huruf tak berkait. Nilai
+   * aslinya -0.022em membuat judul Georgia terlihat berdesakan. */
+  letter-spacing: -0.011em;
+}
+
+/* Paragraf: hindari satu kata tersisa sendirian di baris terakhir. */
+p,
+li {
+  text-wrap: pretty;
+}
+
+/* Angka disejajarkan lebarnya agar tabel tanggal dan statistik tidak bergoyang. */
+time,
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-fg);
+  outline-offset: 3px;
+  border-radius: 0.5rem;
+}
+
+::selection {
+  background-color: color-mix(in oklab, var(--accent-3) 30%, transparent);
+  color: var(--fg);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-2);
+  border: 2px solid var(--bg);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-1);
+}
+* {
+  scrollbar-color: var(--accent-1) var(--bg);
+  scrollbar-width: thin;
+}
+
+/* ==========================================================================
+ * 3. KOMPONEN
+ * Ditulis di dalam @layer supaya utility Tailwind tetap bisa menimpanya.
+ * ========================================================================== */
+@layer components {
+  /* Primitif permukaan kaca, dipakai ulang oleh GlassCard.jsx. */
+  .glass {
+    background-color: var(--glass);
+    /* Jangan tambahkan versi -webkit- di sini. Tailwind sudah membuatkannya
+       otomatis, dan menulisnya dua kali justru membuat properti standarnya
+       terbuang saat situs dibangun, sehingga efek buramnya hilang sama sekali. */
+    backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    box-shadow:
+      inset 0 1px 0 0 var(--inner-glow),
+      0 4px 20px -12px var(--shadow-soft);
+    transition:
+      background-color 0.35s ease,
+      border-color 0.35s ease,
+      box-shadow 0.35s ease,
+      transform 0.35s ease;
+  }
+
+  .glass-hover:hover {
+    background-color: var(--glass-hover);
+    border-color: var(--line-strong);
+    transform: translateY(-4px);
+    box-shadow:
+      inset 0 1px 0 0 var(--inner-glow),
+      0 20px 45px -22px var(--shadow-lift),
+      0 0 40px -24px color-mix(in oklab, var(--accent-2) 80%, transparent);
+  }
+
+  /* Sorotan lembut yang mengikuti kursor di dalam kartu.
+   * Posisinya dikirim komponen GlassCard lewat variabel --spot-x dan --spot-y.
+   * Matikan lewat appearance.spotlight di data/portfolio.js. */
+  .glass-spotlight {
+    position: relative;
+    isolation: isolate;
+  }
+  .glass-spotlight::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    background: radial-gradient(
+      340px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+      color-mix(in oklab, var(--accent-2) 22%, transparent),
+      transparent 70%
+    );
+  }
+  .glass-spotlight:hover::after {
+    opacity: 1;
+  }
+
+  /* Navbar memakai dasar lebih pekat agar teks tetap terbaca di atas apa pun. */
+  .glass-nav {
+    background-color: color-mix(in oklab, var(--bg) 82%, transparent);
+    box-shadow:
+      inset 0 1px 0 0 var(--inner-glow),
+      0 12px 40px -22px var(--shadow-lift);
+  }
+
+  /* Di puncak halaman tidak ada apa pun di belakang navbar, jadi permukaan
+     bening di atas terlihat ringan dan lapang. Begitu halaman digulir, isi
+     halaman mulai lewat di belakangnya, dan permukaannya perlu dijaga supaya
+     menunya tetap terbaca di atas foto atau teks besar sekalipun.
+
+     KENAPA ANGKANYA BEDA ANTARA MODE TERANG DAN GELAP
+
+     Dulu keduanya sama sama 94 persen, dan itu keliru, karena yang dicampur
+     adalah --bg yang nilainya jauh berbeda:
+
+       terang  --bg #f5f7fc, hampir putih  ->  94 persen terasa lapang
+       gelap   --bg #05070f, hampir hitam  ->  94 persen jadi papan hitam
+
+     Jadi angka yang sama menghasilkan kesan yang sama sekali berbeda. Di mode
+     gelap itulah yang membuat navbar terlihat seperti balok gelap menempel di
+     atas halaman, bukan kaca.
+
+     Angka di bawah ini bukan hasil perkiraan. Kontras tulisan menu diukur
+     dari piksel sungguhan pada empat keadaan, di atas teks dan di atas foto,
+     untuk tiap mode. Hasilnya:
+
+       gelap  64 persen  -> 4,9 sampai 7,5 banding 1, lolos dengan lega
+       terang 64 persen  -> 3,0 banding 1 saat lewat di atas foto, GAGAL
+
+     Sebabnya tulisan menu di mode terang memakai --fg-subtle yang memang
+     sudah tipis, dan foto berwarna sedang membuatnya nyaris hilang. Karena
+     itu mode terang tetap dijaga pekat, sedangkan mode gelap, yang jadi
+     keluhan aslinya, dibuat jauh lebih bening.
+
+     Buramnya juga dinaikkan. Warna pekat MENUTUPI apa yang ada di belakang,
+     sedangkan blur MELEBURKANNYA jadi bidang warna rata. Untuk keterbacaan
+     keduanya sama membantu, bedanya bidang rata masih memperlihatkan warna
+     dan gerak isi halaman di belakangnya. Itu yang membuat kacanya terasa
+     kaca. */
+  .glass-nav-solid {
+    background-color: color-mix(in oklab, var(--bg) 92%, transparent);
+    backdrop-filter: blur(26px) saturate(160%);
+    border-color: var(--line-strong);
+    box-shadow:
+      inset 0 1px 0 0 var(--inner-glow),
+      0 16px 44px -20px var(--shadow-lift);
+  }
+
+  [data-theme='dark'] .glass-nav-solid {
+    background-color: color-mix(in oklab, var(--bg) 64%, transparent);
+    backdrop-filter: blur(34px) saturate(180%);
+  }
+
+  /* Border gradien beranimasi untuk kartu unggulan. */
+  .glass-featured {
+    position: relative;
+  }
+  .glass-featured::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      120deg,
+      var(--accent-1),
+      var(--accent-2),
+      var(--accent-3),
+      var(--accent-1)
+    );
+    background-size: 300% 300%;
+    animation: border-flow 9s linear infinite;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.8;
+  }
+
+  /* Teks bergradien. Warna awal mengikuti tema agar tetap terbaca. */
+  .gradient-text {
+    background-image: linear-gradient(
+      100deg,
+      var(--fg) 0%,
+      var(--accent-1) 30%,
+      var(--accent-2) 52%,
+      var(--accent-3) 72%,
+      var(--fg) 100%
+    );
+    background-size: 250% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient-pan 10s ease-in-out infinite;
+  }
+
+  /* Ukuran teks isi yang dipakai berulang. Ditulis sekali di sini supaya
+   * seluruh situs punya irama baca yang sama.
+   *   .text-body      paragraf utama, nyaman untuk teks panjang
+   *   .text-body-sm   keterangan pendukung di dalam kartu
+   *   .text-meta      label kecil seperti tanggal dan lokasi */
+  .text-body {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+  .text-body-sm {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+  }
+  .text-meta {
+    font-size: 0.8125rem;
+    line-height: 1.45;
+  }
+
+  /* Chip kecil untuk skill, tag, dan label. */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.32rem 0.72rem;
+    font-size: 0.78125rem;
+    line-height: 1.15rem;
+    border-radius: 999px;
+    background-color: var(--chip-bg);
+    border: 1px solid var(--line);
+    color: var(--chip-fg);
+    transition:
+      color 0.25s ease,
+      border-color 0.25s ease,
+      background-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+  .chip:hover {
+    color: var(--fg);
+    border-color: color-mix(in oklab, var(--accent-2) 45%, transparent);
+    box-shadow: 0 0 18px -6px color-mix(in oklab, var(--accent-2) 80%, transparent);
+  }
+
+  /*
+    Tombol unduh berkas pada kartu Pengalaman. Bentuknya mengikuti chip supaya
+    menyatu dengan deretan keahlian di atasnya, tetapi diberi ruang sentuh yang
+    lebih tinggi karena ini tautan yang benar benar diklik, bukan label.
+  */
+  .tombol-berkas {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    max-width: 100%;
+    min-height: 2.25rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 1.2;
+    border-radius: 999px;
+    background-color: var(--chip-bg);
+    border: 1px solid var(--line);
+    color: var(--fg-muted);
+    transition:
+      color 0.25s ease,
+      border-color 0.25s ease,
+      background-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+  .tombol-berkas:hover {
+    color: var(--fg);
+    border-color: color-mix(in oklab, var(--accent-2) 45%, transparent);
+    box-shadow: 0 0 18px -6px color-mix(in oklab, var(--accent-2) 80%, transparent);
+  }
+  /* Label jenis berkas: pdf, jpg, mp4, dan seterusnya. */
+  .tombol-berkas-jenis {
+    flex-shrink: 0;
+    padding: 0.05rem 0.35rem;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 0.35rem;
+    background-color: color-mix(in oklab, var(--accent-2) 16%, transparent);
+    color: var(--accent-2);
+  }
+
+
+  /* ==========================================================================
+     TABEL AKADEMIK
+     Dipakai bagian Penelitian, Pengabdian, Publikasi, Seminar, Buku, HKI, dan
+     Kebijakan. Satu bentuk untuk ketujuhnya, lihat components/TabelAkademik.jsx.
+
+     Bentuknya sengaja mendekati tabel Daftar Riwayat Hidup resmi: garis tipis,
+     kepala kolom berhuruf kecil berspasi, dan angka disejajarkan. Yang tidak
+     ditiru cuma satu hal, yaitu garis kotak penuh di setiap sel. Di layar,
+     garis sebanyak itu justru membuat teksnya sulit dibaca.
+     ========================================================================== */
+  .tabel-akademik-bingkai {
+    border: 1px solid var(--line);
+    border-radius: 0.875rem;
+    background-color: var(--glass);
+    box-shadow: 0 4px 20px -14px var(--shadow-soft);
+  }
+
+  .tabel-akademik {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    line-height: 1.55;
+  }
+
+  .tabel-akademik thead th {
+    padding: 0.85rem 1rem;
+    text-align: left;
+    vertical-align: bottom;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg-subtle);
+    border-bottom: 1px solid var(--line-strong);
+    white-space: nowrap;
+  }
+
+  .tabel-akademik tbody td {
+    padding: 0.85rem 1rem;
+    vertical-align: top;
+    border-top: 1px solid var(--line);
+  }
+
+  .tabel-akademik tbody tr:first-child td {
+    border-top: 0;
+  }
+
+  /* Sorotan baris. Halus saja: ini daftar untuk dibaca, bukan ditunjuk. */
+  .tabel-akademik tbody tr {
+    transition: background-color 0.2s ease;
+  }
+  .tabel-akademik tbody tr:hover {
+    background-color: color-mix(in oklab, var(--accent-1) 5%, transparent);
+  }
+
+  .tabel-akademik .kolom-nomor {
+    width: 2.75rem;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    color: var(--fg-subtle);
+    white-space: nowrap;
+  }
+
+  /*
+    DI LAYAR SEMPIT TABELNYA BUKAN DIGULIR, TAPI DITUMPUK
+
+    Menggulir ke samping berarti sebagian isi tersembunyi di luar layar dan
+    pengunjung harus menemukannya sendiri. Di sini tiap baris berubah jadi satu
+    blok, dan nama kolomnya ikut menempel di tiap nilai lewat data-label, jadi
+    tidak ada yang perlu diingat dari kepala tabel yang sudah tidak terlihat.
+  */
+  @media (max-width: 767px) {
+    .tabel-akademik,
+    .tabel-akademik tbody,
+    .tabel-akademik tr,
+    .tabel-akademik td {
+      display: block;
+      width: 100%;
+    }
+
+    .tabel-akademik thead {
+      /* Disembunyikan dari mata, tetap dibaca pembaca layar. */
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    .tabel-akademik tbody tr {
+      padding: 0.35rem 0;
+      border-top: 1px solid var(--line);
+    }
+    .tabel-akademik tbody tr:first-child {
+      border-top: 0;
+    }
+
+    .tabel-akademik tbody td {
+      display: grid;
+      grid-template-columns: 7.5rem 1fr;
+      gap: 0.75rem;
+      padding: 0.4rem 1rem;
+      border-top: 0;
+      /*
+        Tanpa baris ini, label peran seperti "Ketua" melar selebar kolomnya,
+        karena sebagai anak grid dia diregangkan otomatis. Yang terlihat bukan
+        label kecil lagi, melainkan batang abu abu selebar layar.
+      */
+      justify-items: start;
+    }
+
+    .tabel-akademik tbody td::before {
+      content: attr(data-label);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--fg-subtle);
+      padding-top: 0.2rem;
+    }
+
+    /* Nomor urut jadi penanda baris, dipasang di atas sebagai satu baris
+       tersendiri supaya jelas di mana satu butir berakhir dan yang lain mulai. */
+    .tabel-akademik .kolom-nomor {
+      width: 100%;
+      text-align: left;
+      font-weight: 700;
+      color: var(--accent-fg);
+    }
+  }
+
+  @media (max-width: 400px) {
+    .tabel-akademik tbody td {
+      grid-template-columns: 1fr;
+      gap: 0.15rem;
+    }
+  }
+
+  /* Label peran, jenis, dan kategori di dalam tabel. */
+  .tanda-halus,
+  .tanda-kuat {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.15rem 0.55rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .tanda-halus {
+    background-color: var(--chip-bg);
+    border: 1px solid var(--line);
+    color: var(--chip-fg);
+  }
+  .tanda-kuat {
+    background-color: color-mix(in oklab, var(--accent-1) 13%, transparent);
+    border: 1px solid color-mix(in oklab, var(--accent-1) 32%, transparent);
+    color: var(--accent-fg);
+  }
+
+  /* Tombol "Tampilkan sekian lainnya" di bawah tabel. */
+  .tombol-lainnya {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.9rem;
+    min-height: 2.25rem;
+    padding: 0.45rem 1rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    border-radius: 999px;
+    background-color: var(--chip-bg);
+    border: 1px solid var(--line);
+    color: var(--fg-muted);
+    transition:
+      color 0.25s ease,
+      border-color 0.25s ease,
+      background-color 0.25s ease;
+  }
+  .tombol-lainnya:hover {
+    color: var(--fg);
+    border-color: var(--line-strong);
+    background-color: var(--glass-hover);
+  }
+
+  /* Tabel dicetak utuh, tanpa sorotan dan tanpa tombol. */
+  @media print {
+    .tabel-akademik-bingkai {
+      border-color: #000;
+      background: none;
+      box-shadow: none;
+    }
+    .tabel-akademik tbody tr:hover {
+      background: none;
+    }
+  }
+
+  /* Tombol utama bergradien. */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #ffffff;
+    background-image: linear-gradient(100deg, var(--accent-1), var(--accent-2));
+    box-shadow: 0 16px 36px -18px var(--accent-1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 44px -18px var(--accent-2);
+  }
+
+  /* Tombol sekunder berbahan kaca. */
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--fg);
+    background-color: var(--glass);
+    border: 1px solid var(--line-strong);
+    backdrop-filter: blur(16px);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  .btn-ghost:hover {
+    background-color: var(--glass-hover);
+    transform: translateY(-2px);
+  }
+
+  /* Status awal dan akhir animasi scroll-reveal. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Lapisan grain halus di atas gradien. */
+  .layer-noise {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+  }
+
+  /* Garis grid tipis, memberi kesan "kertas teknik" pada latar. */
+  .layer-grid {
+    background-image:
+      linear-gradient(to right, currentColor 1px, transparent 1px),
+      linear-gradient(to bottom, currentColor 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  /* Titik-titik halus sebagai lapisan kedua latar. */
+  .layer-dots {
+    background-image: radial-gradient(currentColor 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  /* Isi artikel blog. Ditulis sekali, dipakai semua postingan.
+   * Ukurannya sengaja lebih besar dari teks kartu karena artikel dibaca
+   * menerus dari atas sampai bawah. */
+  .prose-post {
+    font-size: 1.0625rem;
+  }
+  .prose-post p {
+    margin-bottom: 1.3rem;
+    line-height: 1.85;
+    color: var(--fg-muted);
+  }
+  .prose-post h2 {
+    margin-top: 2.75rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--fg);
+  }
+  .prose-post h3 {
+    margin-top: 2.1rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--fg);
+  }
+  .prose-post li {
+    margin-bottom: 0.6rem;
+    line-height: 1.8;
+    color: var(--fg-muted);
+  }
+  .prose-post a {
+    color: var(--accent-fg);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .prose-post strong {
+    color: var(--fg);
+    font-weight: 650;
+  }
+  .prose-post ul,
+  .prose-post ol {
+    margin: 0 0 1.35rem 1.15rem;
+    list-style: revert;
+  }
+  .prose-post blockquote {
+    margin: 1.75rem 0;
+    padding-left: 1.25rem;
+    border-left: 2px solid var(--accent-1);
+    font-style: italic;
+    color: var(--fg);
+  }
+  .prose-post blockquote p {
+    margin-bottom: 0;
+  }
+  .prose-post hr {
+    margin: 2.25rem 0;
+    border: 0;
+    border-top: 1px solid var(--line);
+  }
+  .prose-post code {
+    padding: 0.15em 0.4em;
+    border-radius: 0.4rem;
+    background-color: var(--surface);
+    font-size: 0.9em;
+  }
+  .prose-post pre {
+    margin: 1.5rem 0;
+    padding: 1rem 1.15rem;
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background-color: var(--surface);
+  }
+  .prose-post pre code {
+    padding: 0;
+    background: none;
+  }
+  .prose-post table {
+    display: block;
+    width: 100%;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    border-collapse: collapse;
+  }
+  .prose-post th,
+  .prose-post td {
+    padding: 0.6rem 0.85rem;
+    border: 1px solid var(--line);
+    text-align: left;
+  }
+
+  /*
+    Blok media di dalam tulisan: gambar, video, pemutar musik, dan dokumen PDF.
+    Dibuat oleh lib/markdown.js saat kamu menempelkan tautan berkas di panel.
+  */
+  .media-blok {
+    margin: 1.75rem 0;
+  }
+  .media-blok img,
+  .media-blok video {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background-color: var(--surface);
+  }
+  .media-blok audio {
+    display: block;
+    width: 100%;
+  }
+  .media-blok figcaption {
+    margin-top: 0.65rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--fg-subtle);
+  }
+  .media-dokumen object {
+    display: block;
+    width: 100%;
+    /* Cukup tinggi untuk membaca satu halaman, tetap muat di layar ponsel. */
+    height: min(78vh, 44rem);
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background-color: var(--surface);
+  }
+  /*
+    Garis waktu pemutar audio pendamping tulisan. Bagian yang sudah lewat
+    diwarnai aksen, sisanya abu abu. Persentasenya dikirim komponen lewat
+    variabel --lewat.
+  */
+  /*
+    Garisnya tetap terlihat setipis 5 piksel, tetapi area yang bisa disentuh
+    dibuat setinggi 24 piksel. Sebelumnya seluruh elemen memang cuma 5 piksel,
+    dan di layar sentuh itu nyaris mustahil digeser dengan jari.
+
+    Caranya: elemennya dibuat tinggi dan bening, lalu garisnya digambar
+    terpisah lewat bagian "track". Tampilannya sama persis.
+  */
+  .pemutar-garis {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 1.5rem;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .pemutar-garis::-webkit-slider-runnable-track {
+    height: 5px;
+    border-radius: 999px;
+    background: linear-gradient(
+      to right,
+      var(--accent-1) 0%,
+      var(--accent-2) var(--lewat, 0%),
+      var(--line-strong) var(--lewat, 0%),
+      var(--line-strong) 100%
+    );
+  }
+  .pemutar-garis::-moz-range-track {
+    height: 5px;
+    border-radius: 999px;
+    background: linear-gradient(
+      to right,
+      var(--accent-1) 0%,
+      var(--accent-2) var(--lewat, 0%),
+      var(--line-strong) var(--lewat, 0%),
+      var(--line-strong) 100%
+    );
+  }
+
+  .pemutar-garis::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    /* Menengahkan bulatan pada garis setebal 5 piksel: (5 - 14) / 2. */
+    margin-top: -4.5px;
+    border: 2px solid var(--bg);
+    border-radius: 50%;
+    background: var(--accent-1);
+  }
+  .pemutar-garis::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--bg);
+    border-radius: 50%;
+    background: var(--accent-1);
+  }
+  .pemutar-garis:focus-visible {
+    outline: 2px solid var(--accent-1);
+    outline-offset: 3px;
+  }
+
+  /* Pemutar musik sisipan di tengah tulisan diberi bingkai supaya terlihat
+     sebagai satu blok utuh, bukan kendali telanjang yang melayang. */
+  .media-musik {
+    padding: 0.9rem 1rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+    background-color: var(--surface);
+  }
+  .media-musik-kepala {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-bottom: 0.7rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--fg);
+  }
+  .media-musik-kepala svg {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    color: var(--accent-fg);
+  }
+
+  .media-unduh {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.25rem;
+    margin-top: 0.75rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  /* Garis progres gulir di tepi paling atas halaman. */
+  .scroll-progress {
+    position: fixed;
+    inset-inline: 0;
+    top: 0;
+    z-index: 60;
+    height: 2.5px;
+    transform-origin: 0 50%;
+    background-image: linear-gradient(
+      90deg,
+      var(--accent-1),
+      var(--accent-2),
+      var(--accent-3)
+    );
+    pointer-events: none;
+  }
+
+  /* Garis bawah yang tumbuh saat kursor lewat, dipakai menu navigasi. */
+  .link-underline {
+    position: relative;
+  }
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0.25rem;
+    height: 1.5px;
+    width: 0;
+    border-radius: 2px;
+    background-image: linear-gradient(90deg, var(--accent-1), var(--accent-3));
+    transition: width 0.3s ease, left 0.3s ease;
+  }
+  .link-underline:hover::after {
+    left: 20%;
+    width: 60%;
+  }
+
+  /*
+    ------------------------------------------------------------------------
+    CATATAN: DUA PERCOBAAN YANG SENGAJA TIDAK DIPAKAI
+    ------------------------------------------------------------------------
+
+    Keduanya terdengar seperti penghematan yang jelas, dan keduanya diukur
+    lebih dulu sebelum diputuskan. Ditulis di sini supaya tidak dicoba lagi
+    tanpa alasan baru.
+
+    content-visibility: auto pada tiap bagian halaman.
+      Melewatkan bagian yang sedang di luar layar. Masalahnya tinggi halaman
+      jadi ditebak dari satu angka perkiraan, sementara bagian di situs ini
+      tingginya berbeda beda jauh, dari 700 sampai 7500 piksel. Hasil ukur di
+      layar 390 piksel: tinggi halaman terbaca 15.031 piksel padahal aslinya
+      28.457, dan angkanya berubah ubah selama digulir. Batang gulirnya jadi
+      meloncat, persis hal yang mau dihindari.
+
+    contain: layout style pada tiap bagian halaman.
+      Membatasi perhitungan tata letak di tiap bagian. Diukur tiga kali di
+      ponsel dengan prosesor diperlambat empat kali: waktu tata letak cuma 5
+      sampai 9 milidetik, jadi tidak ada yang bisa dihemat. Sebagai gantinya
+      pembulatan posisinya bergeser satu piksel di sebagian baris. Tidak
+      sepadan.
+  */
+}
+
+/* ==========================================================================
+ * 4. MODE CETAK
+ * Menyiapkan halaman agar rapi ketika pengunjung menekan Ctrl+P atau menyimpan
+ * portofolio ini sebagai PDF. Elemen dekoratif dan navigasi dilepas, warna
+ * dipaksa terang, dan kartu berubah jadi kotak bergaris tipis.
+ * ========================================================================== */
+@media print {
+  :root,
+  [data-theme='dark'] {
+    --bg: #ffffff;
+    --bg-deep: #ffffff;
+    --fg: #000000;
+    --fg-muted: #1f2937;
+    --fg-subtle: #374151;
+    --accent-fg: #1d3557;
+    --glass: transparent;
+    --glass-hover: transparent;
+    --glass-solid: #ffffff;
+    --line: #d1d5db;
+    --line-strong: #9ca3af;
+    --inner-glow: transparent;
+    --chip-bg: transparent;
+    --chip-fg: #1f2937;
+  }
+
+  body {
+    background: #ffffff !important;
+  }
+
+  /*
+    Lepas elemen yang tidak berguna di atas kertas.
+
+    Perabot situs ditandai satu per satu dengan data-print="hide", bukan
+    disembunyikan lewat nama elemen. Dulu aturan di sini menyembunyikan semua
+    <header> dan <footer>, dan itu ikut menelan judul artikel blog serta kepala
+    dokumen portofolio yang kebetulan memakai elemen yang sama.
+  */
+  .scroll-progress,
+  [data-print='hide'] {
+    display: none !important;
+  }
+
+
+  .glass,
+  .glass-featured::before,
+  .glass-spotlight::after {
+    background: none !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    animation: none !important;
+  }
+
+  .glass {
+    border: 1px solid #d1d5db !important;
+  }
+
+  .chip {
+    border: 1px solid #d1d5db !important;
+  }
+
+  /* Rapatkan jarak antar bagian dan jaga satu kartu tidak terbelah dua halaman. */
+  section {
+    min-height: 0 !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  article,
+  li,
+  figure {
+    break-inside: avoid;
+  }
+
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Tulis alamat lengkap hanya untuk tautan di dalam artikel blog. Tautan
+   * berbentuk ikon di bagian lain sengaja dilewati supaya tata letaknya
+   * tidak berantakan oleh deretan URL panjang. */
+  .prose-post a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.75rem;
+    color: #4b5563;
+    word-break: break-all;
+  }
+}
+
+/* ==========================================================================
+ * 5. KEYFRAMES
+ * ========================================================================== */
+@keyframes blob-drift-a {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33%      { transform: translate3d(6%, 8%, 0) scale(1.12); }
+  66%      { transform: translate3d(-5%, 4%, 0) scale(0.95); }
+}
+
+@keyframes blob-drift-b {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1.05); }
+  40%      { transform: translate3d(-8%, -6%, 0) scale(0.92); }
+  75%      { transform: translate3d(5%, -9%, 0) scale(1.15); }
+}
+
+@keyframes blob-drift-c {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(0.98); }
+  50%      { transform: translate3d(7%, -7%, 0) scale(1.18); }
+}
+
+@keyframes blob-drift-d {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1.02); }
+  45%      { transform: translate3d(-6%, 7%, 0) scale(1.16); }
+}
+
+@keyframes aurora-sweep {
+  0%, 100% { transform: translateX(-8%) skewX(-8deg); opacity: 0.55; }
+  50%      { transform: translateX(8%) skewX(-8deg); opacity: 0.85; }
+}
+
+@keyframes border-flow {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+@keyframes gradient-pan {
+  0%, 100% { background-position: 0% center; }
+  50%      { background-position: 100% center; }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.45; transform: scale(0.8); }
+}
+
+@keyframes scroll-cue {
+  0%, 100% { transform: translateY(0); opacity: 0.55; }
+  50%      { transform: translateY(6px); opacity: 1; }
+}
+
+/*
+  Laci menu di layar kecil.
+
+  Dipercepat dari 0,25 detik menjadi 0,16 detik, dan jarak turunnya dipendekkan
+  dari 12 menjadi 8 piksel. Menu itu benda yang diketuk lalu langsung dipakai,
+  bukan pemanis, jadi lebih baik terasa menjawab daripada terlihat halus.
+  Kerja React-nya sendiri cuma 21 milidetik, sisanya memang animasi ini.
+*/
+@keyframes drawer-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Strip keahlian berjalan di bagian bawah Hero. Isinya digandakan dua kali,
+ * jadi bergeser sejauh separuh lebar sudah cukup untuk perulangan yang mulus. */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes lightbox-in {
+  from { opacity: 0; transform: scale(0.94) translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Elemen Hero masuk berurutan saat halaman pertama dibuka, bukan saat digulir. */
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ==========================================================================
+ * 6. PREFERS-REDUCED-MOTION
+ * Semua animasi dekoratif dimatikan, konten tetap tampil penuh.
+ * ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

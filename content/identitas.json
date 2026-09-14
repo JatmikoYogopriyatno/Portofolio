@@ -1,0 +1,51 @@
+{
+  "nip": "198903172019031011",
+  "nidn": "0017038903",
+  "jabatanFungsional": {
+    "id": "Lektor",
+    "en": "Lecturer (Lektor)"
+  },
+  "jenisKelamin": {
+    "id": "Laki-laki",
+    "en": "Male"
+  },
+  "tempatTanggalLahir": {
+    "id": "Penago II, 17 Maret 1989",
+    "en": "Penago II, 17 March 1989"
+  },
+  "alamatKantor": {
+    "id": "Jl. W.R. Supratman, Kelurahan Pematang Gubernur, Kota Bengkulu",
+    "en": "Jl. W.R. Supratman, Pematang Gubernur, Bengkulu City"
+  },
+  "perguruanTinggi": {
+    "id": "Universitas Bengkulu",
+    "en": "University of Bengkulu"
+  },
+  "fakultas": {
+    "id": "Fakultas Ilmu Sosial dan Ilmu Politik",
+    "en": "Faculty of Social and Political Sciences"
+  },
+  "jurusan": {
+    "id": "Jurusan Administrasi Publik",
+    "en": "Department of Public Administration"
+  },
+  "lulusan": {
+    "d3": "10",
+    "s1": "30",
+    "s2": "-"
+  },
+  "scholarUrl": "",
+  "sintaUrl": "",
+  "scopusUrl": "",
+  "orcid": "",
+  "tandaTangan": {
+    "kota": {
+      "id": "Bengkulu, September 2026",
+      "en": "Bengkulu, September 2026"
+    },
+    "jabatan": {
+      "id": "Ketua Peneliti",
+      "en": "Principal Investigator"
+    }
+  }
+}

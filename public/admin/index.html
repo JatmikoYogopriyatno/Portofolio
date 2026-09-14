@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Panel Jatmiko Yogopriyatno</title>
+    <link rel="icon" href="/icon.png" />
+    <style>
+      /* Tampilan sementara sebelum panelnya selesai dimuat. */
+      body {
+        margin: 0;
+        min-height: 100svh;
+        background: #16202e;
+        color: #c3cbd6;
+        font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+      }
+      #memuat {
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding: 1.5rem;
+      }
+      #memuat p {
+        max-width: 30rem;
+        line-height: 1.75;
+      }
+      /*
+        Foto yang sama dengan yang dipakai halaman masuk panel, yaitu
+        /icon.png. Berkas itu dibuat ulang otomatis tiap kali situs dibangun
+        dari gambar yang dipilih di panel, menu Pengaturan Situs > Nama Situs
+        dan SEO > Ikon situs. Jadi mengganti ikon situs sekali sudah mengganti
+        gambar di kedua layar ini sekaligus.
+
+        Dipasang di sini supaya detik detik pertama sebelum panelnya menyala
+        sudah menampilkan wajah yang benar, bukan layar teks kosong.
+      */
+      #memuat img {
+        width: 88px;
+        height: 88px;
+        margin-bottom: 1.25rem;
+        border-radius: 999px;
+      }
+      #memuat strong {
+        color: #ffffff;
+      }
+      #memuat a {
+        color: #cfa963;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Diganti oleh panel begitu berkasnya selesai dimuat. -->
+    <div id="memuat">
+      <p>
+        <img src="/icon.png" alt="" width="88" height="88" /><br />
+        <strong>Menyiapkan panel konten...</strong><br />
+        Kalau pesan ini tidak hilang setelah beberapa detik, buka kembali halaman ini.
+        Bila tetap tidak muncul, kontennya masih bisa diubah langsung lewat berkas di
+        folder <code>content/</code> pada repositori.
+      </p>
+    </div>
+
+    <!--
+      Panel ditahan dulu supaya tombol sisip media di bawah sempat didaftarkan
+      sebelum editornya menyala. Tanpa penundaan ini, panel sudah membaca daftar
+      tombolnya lebih dulu dan tombol tambahan itu tidak ikut muncul.
+    -->
+    <script>
+      window.CMS_MANUAL_INIT = true;
+    </script>
+
+    <!--
+      Berkas panel disalin dari node_modules ke folder ini setiap kali situs
+      dibangun, lihat scripts/copy-cms.mjs. Disajikan dari domain sendiri supaya
+      panel tetap bisa dibuka walau layanan CDN mana pun sedang bermasalah.
+    -->
+    <script src="/admin/sveltia-cms.js"></script>
+
+    <script>
+      /*
+        TOMBOL SISIP MEDIA DI DALAM TULISAN
+
+        Menambah tiga tombol di bilah alat editor: Audio, Video, dan Dokumen.
+        Cara pakainya sama seperti tombol gambar: klik, pilih berkasnya, selesai.
+
+        Yang ditulis ke berkas tetap penulisan biasa, sama persis seperti
+        menyisipkan gambar. Jadi kalau suatu hari tombol ini bermasalah, kamu
+        masih bisa menempel tautan berkasnya sendiri di baris terpisah dan
+        hasilnya tetap sama. Situs yang memilihkan tampilan pemutarnya,
+        berdasarkan akhiran nama berkas. Lihat lib/markdown.js.
+      */
+      (function () {
+        var AUDIO = 'mp3|wav|ogg|m4a|aac|flac';
+        var VIDEO = 'mp4|webm|mov|ogv|m4v';
+
+        function amanHtml(teks) {
+          return String(teks || '').replace(/[&<>"']/g, function (huruf) {
+            return {
+              '&': '&amp;',
+              '<': '&lt;',
+              '>': '&gt;',
+              '"': '&quot;',
+              "'": '&#39;',
+            }[huruf];
+          });
+        }
+
+        // Ketiga tombol bekerja dengan cara yang sama, cuma beda jenis berkas.
+        function buatTombol(opsi) {
+          return {
+            id: opsi.id,
+            label: opsi.label,
+            fields: [
+              {
+                name: 'src',
+                label: opsi.labelBerkas,
+                widget: 'file',
+                media_library: { config: { max_file_size: 41943040 } },
+              },
+              {
+                name: 'judul',
+                label: 'Keterangan (opsional)',
+                widget: 'string',
+                required: false,
+                hint: 'Tampil sebagai tulisan kecil di bawah pemutarnya.',
+              },
+            ],
+            pattern: opsi.pola,
+            fromBlock: function (cocok) {
+              return { judul: cocok[1] || '', src: cocok[2] || '' };
+            },
+            toBlock: function (data) {
+              // Nama berkas hampir selalu berspasi, dan aturan penulisan
+              // tautan tidak mengizinkan spasi di dalam alamat. Spasinya
+              // disandikan supaya tautannya tetap terbaca sebagai media.
+              var alamat = String(data.src || '').replace(/ /g, '%20');
+              return opsi.tanda + '[' + (data.judul || '') + '](' + alamat + ')';
+            },
+            toPreview: function (data) {
+              if (!data.src) return '';
+              return (
+                opsi.pratinjau(amanHtml(data.src)) +
+                (data.judul ? '<p><small>' + amanHtml(data.judul) + '</small></p>' : '')
+              );
+            },
+          };
+        }
+
+        var tombol = [
+          buatTombol({
+            id: 'sisip-audio',
+            label: 'Audio',
+            labelBerkas: 'Berkas audio',
+            tanda: '!',
+            pola: new RegExp('^!\\[([^\\]]*)\\]\\((\\S+\\.(?:' + AUDIO + '))\\)$', 'i'),
+            pratinjau: function (src) {
+              return '<audio controls src="' + src + '"></audio>';
+            },
+          }),
+          buatTombol({
+            id: 'sisip-video',
+            label: 'Video',
+            labelBerkas: 'Berkas video',
+            tanda: '!',
+            pola: new RegExp('^!\\[([^\\]]*)\\]\\((\\S+\\.(?:' + VIDEO + '))\\)$', 'i'),
+            pratinjau: function (src) {
+              return '<video controls style="max-width:100%" src="' + src + '"></video>';
+            },
+          }),
+          buatTombol({
+            id: 'sisip-dokumen',
+            label: 'Dokumen',
+            labelBerkas: 'Berkas PDF',
+            tanda: '',
+            pola: /^\[([^\]]*)\]\((\S+\.pdf)\)$/i,
+            pratinjau: function (src) {
+              return '<p><a href="' + src + '">Buka dokumen</a></p>';
+            },
+          }),
+        ];
+
+        tombol.forEach(function (satu) {
+          try {
+            window.CMS.registerEditorComponent(satu);
+          } catch (galat) {
+            // Satu tombol gagal tidak boleh menjatuhkan seluruh panel. Isi
+            // tulisan tetap bisa diketik, dan tautan berkas tetap bisa
+            // ditempel manual.
+            console.warn('Tombol ' + satu.id + ' tidak bisa dipasang:', galat);
+          }
+        });
+
+        window.CMS.init();
+      })();
+    </script>
+
+    <script>
+      // Panel menambahkan elemennya sendiri ke halaman. Begitu itu terjadi,
+      // pesan tunggu di atas dilepas supaya tidak menutupi tampilan panel.
+      (function () {
+        var placeholder = document.getElementById('memuat');
+        if (!placeholder) return;
+
+        function isPanelReady() {
+          return Array.prototype.some.call(document.body.children, function (el) {
+            return el !== placeholder && el.tagName !== 'SCRIPT';
+          });
+        }
+
+        function removePlaceholder() {
+          if (placeholder && placeholder.parentNode) placeholder.remove();
+          observer.disconnect();
+        }
+
+        var observer = new MutationObserver(function () {
+          if (isPanelReady()) removePlaceholder();
+        });
+
+        observer.observe(document.body, { childList: true });
+
+        // Kalau panel sudah sempat mount sebelum skrip ini jalan.
+        if (isPanelReady()) removePlaceholder();
+
+        // Pengaman terakhir: kalau setelah 20 detik panel tetap tidak muncul,
+        // pesan tunggu dibiarkan supaya pengunjung tahu ada yang tidak beres.
+        setTimeout(function () {
+          observer.disconnect();
+        }, 20000);
+      })();
+    </script>
+  </body>
+</html>

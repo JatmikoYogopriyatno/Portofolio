@@ -1,0 +1,66 @@
+{
+  "groups": [
+    {
+      "title": {
+        "id": "Kebijakan Publik",
+        "en": "Public Policy"
+      },
+      "icon": "building",
+      "items": [
+        "Analisis Kebijakan Publik",
+        "Formulasi Kebijakan",
+        "Evaluasi Program",
+        "Penyusunan Naskah Akademik",
+        "Policy Brief",
+        "Stakeholder Mapping",
+        "Advokasi Kebijakan"
+      ]
+    },
+    {
+      "title": {
+        "id": "Tata Kelola Pemerintahan",
+        "en": "Governance"
+      },
+      "icon": "briefcase",
+      "items": [
+        "Reformasi Birokrasi",
+        "Desentralisasi & Otonomi Daerah",
+        "Tata Kelola Desa",
+        "Smart Government",
+        "E-Government",
+        "Manajemen Pelayanan Publik",
+        "MSDM Sektor Publik"
+      ]
+    },
+    {
+      "title": {
+        "id": "Metodologi Penelitian",
+        "en": "Research Methods"
+      },
+      "icon": "sparkles",
+      "items": [
+        "Penelitian Kualitatif",
+        "Penelitian Kuantitatif",
+        "System Dynamics Modeling",
+        "Analisis SEM (LISREL)",
+        "Statistik Sosial",
+        "Studi Kasus",
+        "Riset Evaluatif"
+      ]
+    },
+    {
+      "title": {
+        "id": "Pengajaran & Diseminasi",
+        "en": "Teaching & Dissemination"
+      },
+      "icon": "palette",
+      "items": [
+        "Pengajaran Perguruan Tinggi",
+        "Pembimbingan Skripsi & Tesis",
+        "Penulisan Buku Ajar",
+        "Pemakalah Konferensi Internasional",
+        "Pengabdian kepada Masyarakat"
+      ]
+    }
+  ]
+}

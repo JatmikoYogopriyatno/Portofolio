@@ -1,0 +1,78 @@
+{
+  "items": [
+    {
+      "level": "S2",
+      "degree": {
+        "id": "S2 - Magister Administrasi Publik (M.Si)",
+        "en": "Master's Degree in Public Administration (M.Si)"
+      },
+      "school": "Universitas Bengkulu",
+      "location": "Bengkulu",
+      "period": "2013 - 2015",
+      "gpa": {
+        "id": "",
+        "en": ""
+      },
+      "fieldOfStudy": {
+        "id": "Administrasi Publik",
+        "en": "Public Administration"
+      },
+      "thesis": {
+        "id": "Evaluasi Implementasi Program Dana Bergulir Samisake di Kota Bengkulu",
+        "en": "Evaluation of the Samisake Revolving Fund Program Implementation in Bengkulu City"
+      },
+      "supervisor": {
+        "id": "Suratman, S.IP., M.Si; Dr. Achmad Aminudin, M.Si",
+        "en": "Suratman, S.IP., M.Si; Dr. Achmad Aminudin, M.Si"
+      },
+      "notes": {
+        "id": "Tesis: Evaluasi Implementasi Program Dana Bergulir Samisake di Kota Bengkulu. Pembimbing: Suratman, S.IP., M.Si dan Dr. Achmad Aminudin, M.Si.",
+        "en": "Thesis: Evaluation of the Samisake Revolving Fund Program Implementation in Bengkulu City. Supervisors: Suratman, S.IP., M.Si and Dr. Achmad Aminudin, M.Si."
+      },
+      "image": "",
+      "imageAlt": {
+        "id": "",
+        "en": ""
+      },
+      "logo": "",
+      "files": []
+    },
+    {
+      "level": "S1",
+      "degree": {
+        "id": "S1 - Sarjana Ilmu Politik / Administrasi Publik (S.IP)",
+        "en": "Bachelor's Degree in Public Administration (S.IP)"
+      },
+      "school": "Universitas Bengkulu",
+      "location": "Bengkulu",
+      "period": "2008 - 2012",
+      "gpa": {
+        "id": "",
+        "en": ""
+      },
+      "fieldOfStudy": {
+        "id": "Administrasi Publik",
+        "en": "Public Administration"
+      },
+      "thesis": {
+        "id": "Kebijakan Pengelolaan Pelabuhan di Indonesia (Studi pada Pengelolaan Pelabuhan Pulau Baai Provinsi Bengkulu)",
+        "en": "Port Management Policy in Indonesia (A Study of Pulau Baai Port Management, Bengkulu Province)"
+      },
+      "supervisor": {
+        "id": "Drs. Djonet Santoso, M.A; Drs. Jarto Tarigan, M.S.",
+        "en": "Drs. Djonet Santoso, M.A; Drs. Jarto Tarigan, M.S."
+      },
+      "notes": {
+        "id": "Skripsi: Kebijakan Pengelolaan Pelabuhan di Indonesia (Studi pada Pengelolaan Pelabuhan Pulau Baai Provinsi Bengkulu). Pembimbing: Drs. Djonet Santoso, M.A dan Drs. Jarto Tarigan, M.S.",
+        "en": "Undergraduate thesis: Port Management Policy in Indonesia (A Study of Pulau Baai Port Management, Bengkulu Province). Supervisors: Drs. Djonet Santoso, M.A and Drs. Jarto Tarigan, M.S."
+      },
+      "image": "",
+      "imageAlt": {
+        "id": "",
+        "en": ""
+      },
+      "logo": "",
+      "files": []
+    }
+  ]
+}

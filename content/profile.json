@@ -1,0 +1,35 @@
+{
+  "name": "Jatmiko Yogopriyatno, S.IP., M.Si",
+  "shortName": "Jatmiko Yogopriyatno",
+  "availability": {
+    "available": true,
+    "label": {
+      "id": "Terbuka untuk kolaborasi riset",
+      "en": "Open to research collaboration"
+    },
+    "dotColor": "#1d4ed8"
+  },
+  "headline": {
+    "id": "Dosen dan Peneliti Administrasi Publik, Universitas Bengkulu. Fokus pada analisis kebijakan publik, tata kelola pemerintahan daerah, dan pemodelan sistem untuk pengambilan keputusan publik.",
+    "en": "Lecturer and Researcher in Public Administration, University of Bengkulu. Focused on public policy analysis, local governance, and systems modelling for public decision making."
+  },
+  "tagline": {
+    "id": "Menjembatani riset akademik dengan perumusan kebijakan daerah yang benar-benar dipakai pemerintah.",
+    "en": "Bridging academic research and local policy formulation that governments actually use."
+  },
+  "location": "Bengkulu, Indonesia",
+  "resumeUrl": "/cetak/cv-peneliti/",
+  "avatar": "/images/avatar.svg",
+  "photoCard": {
+    "name": "Jatmiko Yogopriyatno, S.IP., M.Si",
+    "motto": {
+      "id": "Kebijakan yang baik lahir dari bukti yang jujur dan keberpihakan pada publik.",
+      "en": "Good policy is born from honest evidence and a commitment to the public."
+    }
+  },
+  "avatarAlt": {
+    "id": "Foto profil Jatmiko Yogopriyatno",
+    "en": "Profile photo of Jatmiko Yogopriyatno"
+  },
+  "avatarFallback": "/images/avatar.svg"
+}

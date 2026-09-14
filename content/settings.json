@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "siteTitle": "Jatmiko Yogopriyatno, S.IP., M.Si | Dosen dan Peneliti Administrasi Publik",
+    "favicon": "",
+    "googleVerification": "",
+    "description": {
+      "id": "Portofolio akademik Jatmiko Yogopriyatno, S.IP., M.Si. Dosen dan peneliti Administrasi Publik Universitas Bengkulu, dengan fokus pada analisis kebijakan publik, tata kelola pemerintahan daerah, dan pemodelan sistem.",
+      "en": "Academic portfolio of Jatmiko Yogopriyatno, S.IP., M.Si. Lecturer and researcher in Public Administration at the University of Bengkulu, focused on public policy analysis, local governance, and systems modelling."
+    },
+    "keywords": [
+      "Jatmiko Yogopriyatno",
+      "Administrasi Publik",
+      "Kebijakan Publik",
+      "Universitas Bengkulu",
+      "Naskah Akademik",
+      "Tata Kelola Pemerintahan",
+      "Reformasi Birokrasi",
+      "System Dynamics",
+      "Dosen FISIP UNIB",
+      "Peneliti Kebijakan Publik"
+    ],
+    "ogImage": "",
+    "baseUrl": "https://jatmikoyogopriyatno.vercel.app",
+    "locale": "id",
+    "defaultTheme": "light",
+    "themeColorLight": "#f7f5f0",
+    "themeColorDark": "#0f1720"
+  },
+  "appearance": {
+    "spotlight": false,
+    "scrollProgress": true,
+    "countUpStats": true,
+    "backToTop": true,
+    "photoAsLogo": false,
+    "shareButtons": true,
+    "heroMarquee": false,
+    "printLink": true,
+    "lightbox": true,
+    "commandPalette": true
+  }
+}

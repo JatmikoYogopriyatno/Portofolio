@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "name": {
+        "id": "Bahasa Indonesia",
+        "en": "Indonesian"
+      },
+      "level": {
+        "id": "Penutur asli",
+        "en": "Native speaker"
+      }
+    },
+    {
+      "name": {
+        "id": "Bahasa Inggris",
+        "en": "English"
+      },
+      "level": {
+        "id": "Mampu secara akademik",
+        "en": "Professional academic proficiency"
+      }
+    }
+  ]
+}

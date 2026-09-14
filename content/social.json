@@ -1,0 +1,39 @@
+{
+  "items": [
+    {
+      "label": "Email",
+      "handle": "jyogop@unib.ac.id",
+      "href": "mailto:jyogop@unib.ac.id",
+      "icon": "mail",
+      "featured": true
+    },
+    {
+      "label": "WhatsApp",
+      "handle": "081373069706",
+      "href": "https://wa.me/6281373069706",
+      "icon": "whatsapp",
+      "featured": true
+    },
+    {
+      "label": "Google Scholar",
+      "handle": "Jatmiko Yogopriyatno, S.IP., M.Si",
+      "href": "",
+      "icon": "scholar",
+      "featured": true
+    },
+    {
+      "label": "SINTA",
+      "handle": "Kemdikbud SINTA",
+      "href": "",
+      "icon": "book",
+      "featured": true
+    },
+    {
+      "label": "Universitas Bengkulu",
+      "handle": "unib.ac.id",
+      "href": "https://www.unib.ac.id/",
+      "icon": "building",
+      "featured": false
+    }
+  ]
+}
