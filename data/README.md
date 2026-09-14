@@ -1513,7 +1513,8 @@ Angkanya perlu tempat disimpan. Vercel menyediakannya gratis:
 5. Deploy ulang lewat tab Deployments
 
 Vercel mengisi sendiri dua environment variable yang dibutuhkan
-(`KV_REST_API_URL` dan `KV_REST_API_TOKEN`), jadi tidak ada yang perlu kamu
+(`KV_REST_API_URL` dan `KV_REST_API_TOKEN`, atau `UPSTASH_REDIS_REST_URL` dan
+`UPSTASH_REDIS_REST_TOKEN` — situs menerima kedua penamaan), jadi tidak ada yang perlu kamu
 salin tempel.
 
 Paket gratisnya jauh lebih dari cukup untuk situs portofolio.
