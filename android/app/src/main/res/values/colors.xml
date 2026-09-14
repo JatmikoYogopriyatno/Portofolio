@@ -1,0 +1,13 @@
+<resources>
+    <!-- Diambil dari palet situs, lihat bagian 1 app/globals.css.
+         Biru tinta sebagai warna utama, kuningan tua sebagai aksen. -->
+    <color name="biru_tinta">#16365C</color>
+    <color name="biru_sedang">#2B4D78</color>
+    <color name="kuningan">#6F5115</color>
+    <color name="kertas">#F8F7F4</color>
+    <color name="tinta">#141B24</color>
+
+    <color name="kertas_gelap">#0E151C</color>
+    <color name="tinta_terang">#F4F2ED</color>
+    <color name="kuningan_terang">#D9B97A</color>
+</resources>

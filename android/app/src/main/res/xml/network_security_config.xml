@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Seluruh lalu lintas wajib terenkripsi.
+
+  cleartextTrafficPermitted="false" berlaku menyeluruh, jadi tidak ada
+  permintaan http biasa yang bisa lolos, termasuk dari gambar atau berkas yang
+  suatu saat ditempel lewat panel. Panel admin memegang token GitHub yang bisa
+  menulis ke seluruh repositori, dan token seperti itu tidak boleh melewati
+  sambungan yang bisa dibaca orang lain di jaringan yang sama.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Portofolio Jatmiko</string>
+
+    <string name="menu_situs">Situs</string>
+    <string name="menu_panel">Panel Admin</string>
+    <string name="menu_muat_ulang">Muat ulang</string>
+    <string name="menu_peramban">Buka di peramban</string>
+    <string name="menu_bagikan">Bagikan</string>
+
+    <string name="galat_judul">Tidak bisa memuat halaman</string>
+    <string name="galat_pesan">Periksa sambungan internet Anda, lalu coba lagi.</string>
+    <string name="galat_tombol">Coba lagi</string>
+
+    <string name="keluar_konfirmasi">Tekan sekali lagi untuk keluar</string>
+    <string name="unduhan_mulai">Mengunduh %1$s</string>
+    <string name="unduhan_gagal">Unduhan gagal dimulai</string>
+    <string name="pilih_berkas">Pilih berkas</string>
+    <string name="masuk_github">Masuk dengan GitHub</string>
+    <string name="tutup">Tutup</string>
+</resources>

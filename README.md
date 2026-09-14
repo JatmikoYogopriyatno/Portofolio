@@ -127,6 +127,24 @@ situs statis murni.
 
 ---
 
+## 1a. Aplikasi Android
+
+Folder `android/` berisi proyek aplikasi Android yang menampilkan situs ini
+beserta panel adminnya di dalam WebView. Dua tab: Situs dan Panel Admin.
+
+Isinya tidak disalin ke dalam aplikasi. Yang ditampilkan adalah situs yang sama
+persis, jadi setiap kali kamu menyunting sesuatu lewat panel, aplikasi ikut
+berubah tanpa perlu dibangun maupun dipasang ulang.
+
+Yang dikerjakan di sisi Android hanya yang memang tidak bisa dilakukan halaman
+web dari dalam WebView: membuka pemilih berkas saat panel meminta unggahan,
+membuka jendela izin GitHub, menyimpan berkas unduhan, dan membuat tombol
+kembali mundur satu halaman alih alih menutup aplikasi.
+
+Cara membangun APK-nya ada di `android/README.md`.
+
+---
+
 ## 1b. Yang ditambahkan untuk versi akademik
 
 Templat aslinya dibuat untuk portofolio profesional pada umumnya. Versi ini

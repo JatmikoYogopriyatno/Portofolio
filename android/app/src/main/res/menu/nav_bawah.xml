@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Dua tujuan saja, dan itu memang seluruh isi aplikasi ini: situs yang dilihat
+  pengunjung, dan panel tempat isinya disunting. Menambah tab ketiga berarti
+  menyalin navigasi yang sudah ada di dalam situs, dan dua navigasi yang
+  mengurus hal yang sama selalu berakhir tidak sinkron.
+-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_situs"
+        android:icon="@drawable/ic_situs"
+        android:title="@string/menu_situs" />
+    <item
+        android:id="@+id/nav_panel"
+        android:icon="@drawable/ic_panel"
+        android:title="@string/menu_panel" />
+</menu>

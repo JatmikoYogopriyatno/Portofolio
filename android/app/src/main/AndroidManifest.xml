@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Satu satunya izin yang dibutuhkan. Aplikasi ini tidak membaca kontak,
+         lokasi, kamera, maupun penyimpanan: seluruh isinya dimuat dari situs. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name=".Aplikasi"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:theme="@style/Theme.Portofolio">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustResize"
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|keyboardHidden|uiMode">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!--
+              Membuka tautan situs langsung di aplikasi.
+
+              android:autoVerify meminta Android memeriksa berkas
+              assetlinks.json di situs. Selama berkas itu belum dipasang,
+              Android tetap menawarkan aplikasi ini sebagai pilihan saat
+              tautan dibuka, hanya tidak otomatis. Situs tetap bisa dibuka
+              di peramban seperti biasa.
+            -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="jatmikoyogop.vercel.app" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

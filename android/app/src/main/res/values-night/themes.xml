@@ -1,0 +1,15 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Mode gelap mengikuti setelan sistem. Situsnya sendiri juga punya mode
+         gelap, dan keduanya dibuat sewarna supaya tidak ada bingkai terang
+         yang mengelilingi halaman gelap. -->
+    <style name="Theme.Portofolio" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/kuningan_terang</item>
+        <item name="colorOnPrimary">@color/kertas_gelap</item>
+        <item name="android:colorBackground">@color/kertas_gelap</item>
+        <item name="colorSurface">@color/kertas_gelap</item>
+        <item name="colorOnSurface">@color/tinta_terang</item>
+        <item name="android:statusBarColor">@color/kertas_gelap</item>
+        <item name="android:navigationBarColor">@color/kertas_gelap</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">false</item>
+    </style>
+</resources>
