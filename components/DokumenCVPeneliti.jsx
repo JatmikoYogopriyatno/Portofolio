@@ -1,9 +1,11 @@
 'use client';
 
+import { useState } from 'react';
 import { portfolio } from '@/data/portfolio';
 import { useLanguage } from '@/components/LanguageProvider';
 import { terisi } from '@/lib/teks-dokumen';
 import DokumenBilah, { dokumenLain } from '@/components/DokumenBilah';
+import { RENTANG_BAWAAN, keteranganRentang, saring } from '@/lib/rentang';
 
 /**
  * =============================================================================
@@ -108,6 +110,13 @@ function Alamat({ href }) {
 
 export default function DokumenCVPeneliti() {
   const { lang, t } = useLanguage();
+
+  /*
+    Rentang waktu isi dokumen. Disimpan di sini, bukan di alamat halaman,
+    karena halaman ini dibuat sekali saat build dan alamatnya tidak boleh
+    bercabang jadi banyak versi di mesin pencari.
+  */
+  const [rentang, setRentang] = useState(RENTANG_BAWAAN);
   const {
     profile,
     contact,
@@ -126,22 +135,31 @@ export default function DokumenCVPeneliti() {
 
   const id = lang === 'id';
 
+  /** Menyaring satu daftar menurut rentang yang sedang dipilih. */
+  const R = (daftar) => saring(daftar, rentang);
+
+  /*
+    Judul bagian ikut rentang. Berkas aslinya berbunyi "dalam 5 Tahun
+    Terakhir", dan kalimat itu jadi keliru begitu pembaca memilih tiga tahun
+    atau seluruh rekam jejak. Jadi keterangannya disusun, bukan ditulis tetap.
+  */
+  const ket = keteranganRentang(rentang, lang);
+  const judulRentang = (dasar) => (ket ? `${dasar} ${ket}` : dasar);
+
   const L = id
     ? {
         dokumen: 'DAFTAR RIWAYAT HIDUP',
         identitas: 'Identitas Diri',
         pendidikan: 'Riwayat Pendidikan',
-        penelitian: 'Pengalaman Penelitian dalam 5 Tahun Terakhir',
+        penelitian: judulRentang('Pengalaman Penelitian'),
         penelitianCatatan: '(Bukan Skripsi, Tesis, dan Disertasi)',
-        pengabdian: 'Pengalaman Pengabdian kepada Masyarakat dalam 5 Tahun Terakhir',
-        publikasi: 'Publikasi Artikel Ilmiah dalam Jurnal dalam 5 Tahun Terakhir',
-        seminar: 'Pemakalah Seminar Ilmiah (Oral Presentation) dalam 5 Tahun Terakhir',
-        buku: 'Karya Buku dalam 5 Tahun Terakhir',
-        hki: 'Perolehan HKI dalam 10 Tahun Terakhir',
-        kebijakan:
-          'Pengalaman Merumuskan Kebijakan Publik / Rekayasa Sosial Lainnya dalam 10 Tahun Terakhir',
-        penghargaan:
-          'Penghargaan dalam 10 Tahun Terakhir (dari pemerintah, asosiasi atau institusi lainnya)',
+        pengabdian: judulRentang('Pengalaman Pengabdian kepada Masyarakat'),
+        publikasi: judulRentang('Publikasi Artikel Ilmiah dalam Jurnal'),
+        seminar: judulRentang('Pemakalah Seminar Ilmiah (Oral Presentation)'),
+        buku: judulRentang('Karya Buku'),
+        hki: judulRentang('Perolehan HKI'),
+        kebijakan: judulRentang('Pengalaman Merumuskan Kebijakan Publik / Rekayasa Sosial Lainnya'),
+        penghargaan: judulRentang('Penghargaan') + ' (dari pemerintah, asosiasi atau institusi lainnya)',
         pernyataan:
           'Semua data yang saya isikan dan tercantum dalam biodata ini adalah benar dan dapat dipertanggungjawabkan secara hukum. Apabila di kemudian hari ternyata dijumpai ketidaksesuaian dengan kenyataan, saya sanggup menerima sanksi.',
         ketua: 'Ketua Peneliti',
@@ -150,15 +168,15 @@ export default function DokumenCVPeneliti() {
         dokumen: 'CURRICULUM VITAE',
         identitas: 'Personal Details',
         pendidikan: 'Education',
-        penelitian: 'Research Experience in the Last 5 Years',
+        penelitian: judulRentang('Research Experience'),
         penelitianCatatan: '(Excluding undergraduate, master, and doctoral theses)',
-        pengabdian: 'Community Service Experience in the Last 5 Years',
-        publikasi: 'Journal Articles Published in the Last 5 Years',
-        seminar: 'Conference Papers (Oral Presentation) in the Last 5 Years',
-        buku: 'Books Authored in the Last 5 Years',
-        hki: 'Registered Intellectual Property in the Last 10 Years',
-        kebijakan: 'Public Policy Formulation and Social Engineering in the Last 10 Years',
-        penghargaan: 'Awards in the Last 10 Years (from government, associations, or institutions)',
+        pengabdian: judulRentang('Community Service Experience'),
+        publikasi: judulRentang('Journal Articles'),
+        seminar: judulRentang('Conference Papers (Oral Presentation)'),
+        buku: judulRentang('Authored Books'),
+        hki: judulRentang('Registered Intellectual Property'),
+        kebijakan: judulRentang('Public Policy Formulation and Social Engineering'),
+        penghargaan: judulRentang('Awards') + ' (from government, associations, or institutions)',
         pernyataan:
           'All information entered in this curriculum vitae is true and can be legally accounted for. Should any discrepancy be found at a later date, I am prepared to accept the consequences.',
         ketua: 'Principal Investigator',
@@ -274,7 +292,13 @@ export default function DokumenCVPeneliti() {
 
   return (
     <div className="dok-lembar">
-      <DokumenBilah judul={id ? 'CV Peneliti' : 'Researcher CV'} lain={dokumenLain('cvPeneliti')} />
+      <DokumenBilah
+        judul={id ? 'CV Peneliti' : 'Researcher CV'}
+        lain={dokumenLain('cvPeneliti')}
+        jenis="cv-peneliti"
+        rentang={rentang}
+        setRentang={setRentang}
+      />
 
       <div className="dok-kertas">
         <article className="drh">
@@ -345,7 +369,7 @@ export default function DokumenCVPeneliti() {
                 id ? 'Peran' : 'Role',
               ]}
               lebar={['auto', '22%', '8%', '11%']}
-              baris={penelitian.map((p) => [p.judul, p.dana, p.tahun, t(p.peran)])}
+              baris={R(penelitian).map((p) => [p.judul, p.dana, p.tahun, t(p.peran)])}
             />
           </Bagian>
 
@@ -359,7 +383,7 @@ export default function DokumenCVPeneliti() {
                 id ? 'Peran' : 'Role',
               ]}
               lebar={['auto', '22%', '8%', '11%']}
-              baris={pengabdian.map((p) => [p.judul, p.dana, p.tahun, t(p.peran)])}
+              baris={R(pengabdian).map((p) => [p.judul, p.dana, p.tahun, t(p.peran)])}
             />
           </Bagian>
 
@@ -372,7 +396,7 @@ export default function DokumenCVPeneliti() {
                 id ? 'URL Artikel' : 'Article URL',
               ]}
               lebar={['auto', '13%', '31%']}
-              baris={publications.map((p) => [
+              baris={R(publications).map((p) => [
                 p.title,
                 t(p.aktivitas),
                 <Alamat key={p.url} href={p.url} />,
@@ -389,7 +413,7 @@ export default function DokumenCVPeneliti() {
                 id ? 'Waktu dan Tempat' : 'Time and Venue',
               ]}
               lebar={['31%', 'auto', '27%']}
-              baris={seminar.map((s) => [s.forum, s.judul, s.waktu])}
+              baris={R(seminar).map((s) => [s.forum, s.judul, s.waktu])}
             />
           </Bagian>
 
@@ -403,7 +427,7 @@ export default function DokumenCVPeneliti() {
                 id ? 'Penerbit' : 'Publisher',
               ]}
               lebar={['8%', 'auto', '11%', '26%']}
-              baris={buku.map((b) => [b.tahun, b.judul, b.halaman, b.penerbit])}
+              baris={R(buku).map((b) => [b.tahun, b.judul, b.halaman, b.penerbit])}
             />
           </Bagian>
 
@@ -417,7 +441,7 @@ export default function DokumenCVPeneliti() {
                 id ? 'Nomor Pendaftaran / Sertifikat' : 'Registration / Certificate No.',
               ]}
               lebar={['8%', 'auto', '10%', '28%']}
-              baris={hki.map((h) => [h.tahun, h.judul, h.jenis, h.nomor])}
+              baris={R(hki).map((h) => [h.tahun, h.judul, h.jenis, h.nomor])}
             />
           </Bagian>
 
@@ -433,7 +457,7 @@ export default function DokumenCVPeneliti() {
                 id ? 'Respon Masyarakat' : 'Public Response',
               ]}
               lebar={['auto', '8%', '26%', '13%']}
-              baris={kebijakan.map((k) => [k.judul, k.tahun, k.tempat, t(k.respon)])}
+              baris={R(kebijakan).map((k) => [k.judul, k.tahun, k.tempat, t(k.respon)])}
             />
           </Bagian>
 
@@ -446,7 +470,7 @@ export default function DokumenCVPeneliti() {
                 id ? 'Tahun' : 'Year',
               ]}
               lebar={['auto', '38%', '10%']}
-              baris={penghargaan.map((p) => [t(p.jenis), t(p.institusi), p.tahun])}
+              baris={R(penghargaan).map((p) => [t(p.jenis), t(p.institusi), p.tahun])}
             />
           </Bagian>
 

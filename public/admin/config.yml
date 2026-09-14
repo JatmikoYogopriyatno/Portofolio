@@ -658,6 +658,17 @@ collections:
             hint: "Tampil di bagian Publikasi."
             fields:
               - { label: "Judul", name: "title", widget: "text" }
+              # Dipakai penyaring rentang waktu di halaman cetak.
+              #
+              # PENTING: baris yang kolom tahunnya dikosongkan SELALU ikut
+              # tampil, berapa pun rentang yang dipilih pembaca. Itu disengaja.
+              # Kalau baris tanpa tahun ikut dibuang, memilih "5 tahun
+              # terakhir" bisa melenyapkan seluruh daftar publikasi tanpa ada
+              # yang menyadarinya, dan berkas itu terlanjur dikirim ke penilai.
+              #
+              # Jadi mengisinya bukan keharusan, tetapi selama masih kosong
+              # baris itu tidak akan pernah tersaring.
+              - { label: "Tahun terbit", name: "tahun", widget: "string", required: false, hint: "Empat angka saja, contoh 2024. Dipakai menyaring isi dokumen menurut rentang waktu. Baris yang dikosongkan selalu ikut tampil." }
               # Kolom Aktivitas ada di berkas Daftar Riwayat Hidup resmi, dan
               # dipakai membedakan luaran penelitian dari luaran pengabdian.
               - label: "Aktivitas"
@@ -917,6 +928,7 @@ collections:
             fields:
               - { label: "Nama temu ilmiah atau seminar", name: "forum", widget: "text" }
               - { label: "Judul artikel ilmiah", name: "judul", widget: "text" }
+              - { label: "Tahun", name: "tahun", widget: "string", required: false, hint: "Empat angka saja, contoh 2024. Dipakai menyaring isi dokumen menurut rentang waktu. Kalau dikosongkan, tahunnya dibaca dari kolom Waktu dan tempat di bawah." }
               - { label: "Waktu dan tempat", name: "waktu", widget: "text", required: false, hint: "Contoh: 27 Oktober 2023, Universitas Andalas, Padang." }
 
       - name: "buku"

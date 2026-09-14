@@ -19,6 +19,7 @@
     "kecilkan-media": "node scripts/shrink-media.mjs"
   },
   "dependencies": {
+    "docx": "^9.7.1",
     "marked": "^18.0.11",
     "next": "16.3.4",
     "react": "19.2.8",

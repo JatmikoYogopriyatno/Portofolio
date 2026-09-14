@@ -1,10 +1,12 @@
 'use client';
 
+import { useState } from 'react';
 import { portfolio } from '@/data/portfolio';
 import { useLanguage } from '@/components/LanguageProvider';
 import { terisi } from '@/lib/teks-dokumen';
 import { withBasePath } from '@/lib/asset';
 import DokumenBilah, { dokumenLain } from '@/components/DokumenBilah';
+import { RENTANG_BAWAAN } from '@/lib/rentang';
 
 /**
  * =============================================================================
@@ -30,6 +32,7 @@ import DokumenBilah, { dokumenLain } from '@/components/DokumenBilah';
 
 export default function DokumenPortofolio() {
   const { lang, t } = useLanguage();
+  const [rentang, setRentang] = useState(RENTANG_BAWAAN);
   const {
     profile,
     contact,
@@ -74,6 +77,9 @@ export default function DokumenPortofolio() {
       <DokumenBilah
         judul={lang === 'id' ? 'Portofolio' : 'Portfolio'}
         lain={dokumenLain('portofolio')}
+        jenis="portofolio"
+        rentang={rentang}
+        setRentang={setRentang}
       />
 
       <div className="dok-kertas">

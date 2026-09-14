@@ -1,10 +1,12 @@
 'use client';
 
+import { useState } from 'react';
 import { portfolio } from '@/data/portfolio';
 import { useLanguage } from '@/components/LanguageProvider';
 import { barisInstansi, rapikanTanggal, terisi } from '@/lib/teks-dokumen';
 import { labelTautan } from '@/lib/tautan-cv';
 import DokumenBilah, { dokumenLain } from '@/components/DokumenBilah';
+import { RENTANG_BAWAAN, saring } from '@/lib/rentang';
 
 /**
  * =============================================================================
@@ -56,6 +58,10 @@ function keBulir(teks) {
 
 export default function DokumenCV() {
   const { lang, t } = useLanguage();
+  const [rentang, setRentang] = useState(RENTANG_BAWAAN);
+
+  /** Menyaring satu daftar menurut rentang yang sedang dipilih. */
+  const R = (daftar) => saring(daftar, rentang);
   const {
     profile,
     contact,
@@ -164,7 +170,13 @@ export default function DokumenCV() {
 
   return (
     <div className="dok-lembar">
-      <DokumenBilah judul="CV" lain={dokumenLain('cv')} />
+      <DokumenBilah
+        judul="CV"
+        lain={dokumenLain('cv')}
+        jenis="cv"
+        rentang={rentang}
+        setRentang={setRentang}
+      />
 
       <div className="dok-kertas">
         <article className="cv">
@@ -292,9 +304,9 @@ export default function DokumenCV() {
             kedua, karena dua puluh enam entri bergaya Harvard penuh akan
             menghabiskan satu halaman sendiri.
           */}
-          {buku.length > 0 ? (
+          {R(buku).length > 0 ? (
             <Bagian judul={L.buku}>
-              {buku.map((item, i) => (
+              {R(buku).map((item, i) => (
                 <div key={i} className="cv-entri">
                   <div className="cv-baris">
                     <span className="cv-utama">{item.judul}</span>
@@ -310,9 +322,9 @@ export default function DokumenCV() {
             </Bagian>
           ) : null}
 
-          {hki.length > 0 ? (
+          {R(hki).length > 0 ? (
             <Bagian judul={L.hki}>
-              {hki.map((item, i) => (
+              {R(hki).map((item, i) => (
                 <div key={i} className="cv-entri">
                   <div className="cv-baris">
                     <span className="cv-utama">{item.judul}</span>
@@ -326,9 +338,9 @@ export default function DokumenCV() {
             </Bagian>
           ) : null}
 
-          {kebijakan.length > 0 ? (
+          {R(kebijakan).length > 0 ? (
             <Bagian judul={L.kebijakan}>
-              {kebijakan.map((item, i) => (
+              {R(kebijakan).map((item, i) => (
                 <div key={i} className="cv-entri">
                   <div className="cv-baris">
                     <span className="cv-utama">
@@ -342,9 +354,9 @@ export default function DokumenCV() {
           ) : null}
 
           {/* ---------------- Publikasi ---------------- */}
-          {publications.length > 0 ? (
+          {R(publications).length > 0 ? (
             <Bagian judul={L.publikasi}>
-              {publications.map((item, i) => (
+              {R(publications).map((item, i) => (
                 <div key={i} className="cv-entri">
                   <div className="cv-baris">
                     {/* Judulnya sendiri yang jadi tautan. Alamat publikasi

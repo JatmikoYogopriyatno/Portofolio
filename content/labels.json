@@ -280,11 +280,15 @@
     "en": "Documents"
   },
   "berkasSubjudul": {
-    "id": "Tiga bentuk berkas untuk tiga keperluan berbeda. Pilih salah satu, lalu simpan sebagai PDF lewat tombol di atas halamannya.",
-    "en": "Three document formats for three different purposes. Pick one, then save it as PDF using the button at the top of the page."
+    "id": "Tiga bentuk berkas untuk tiga keperluan berbeda. Buka salah satu untuk membacanya atau menyimpannya sebagai PDF, lengkap dengan pilihan rentang waktu. Untuk berkas yang bisa disunting, unduh versi Word-nya.",
+    "en": "Three document formats for three different purposes. Open one to read it or save it as PDF, with a time-range option. For an editable file, download the Word version."
   },
   "berkasBuka": {
     "id": "Buka dokumen",
     "en": "Open document"
+  },
+  "berkasWord": {
+    "id": "Unduh versi Word",
+    "en": "Download Word version"
   }
 }

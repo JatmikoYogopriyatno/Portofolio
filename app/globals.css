@@ -17,9 +17,9 @@
  * ========================================================================== */
 :root {
   /* Warna merek, sama di mode terang maupun gelap. */
-  --accent-1: #1d3557; /* biru tinta  */
-  --accent-2: #2f5580; /* biru sedang */
-  --accent-3: #9a7534; /* kuningan    */
+  --accent-1: #16365c; /* biru tinta  */
+  --accent-2: #2b4d78; /* biru sedang */
+  --accent-3: #6f5115; /* kuningan    */
 
   /* Kecepatan animasi lapisan latar. Diperlambat dari 30 detik supaya
    * geraknya nyaris tidak terasa. Halaman akademik tidak perlu bergerak. */
@@ -28,64 +28,64 @@
   /* ---- MODE TERANG (default) ---- */
   /* Latar sedikit hangat, meniru kertas, bukan putih layar. Bedanya tipis
    * tetapi terasa saat dibaca lama. */
-  --bg: #f7f5f0;
-  --bg-deep: #eeeae0;
-  --fg: #16202e;
-  --fg-muted: #3d4a5c;
-  --fg-subtle: #5a6879;
-  --accent-fg: #1d3557;
+  --bg: #f8f7f4;
+  --bg-deep: #efece5;
+  --fg: #141b24;
+  --fg-muted: #364250;
+  --fg-subtle: #4b5766;
+  --accent-fg: #16365c;
 
   --glass: rgb(255 255 255 / 0.78);
   --glass-hover: rgb(255 255 255 / 0.95);
   --glass-solid: #ffffff;
-  --line: rgb(22 32 46 / 0.12);
-  --line-strong: rgb(22 32 46 / 0.2);
+  --line: rgb(20 27 36 / 0.2);
+  --line-strong: rgb(20 27 36 / 0.34);
   --inner-glow: rgb(255 255 255 / 0.9);
   --shadow-soft: rgb(22 32 46 / 0.09);
   --shadow-lift: rgb(22 32 46 / 0.15);
 
-  --chip-bg: rgb(22 32 46 / 0.045);
-  --chip-fg: #3d4a5c;
+  --chip-bg: rgb(20 27 36 / 0.06);
+  --chip-fg: #3b4655;
 
   /* Intensitas lapisan dekoratif latar.
    * Diturunkan cukup jauh dari templat aslinya. Warna yang berpendar di
    * belakang teks cocok untuk halaman produk, tidak untuk halaman yang isinya
    * daftar penelitian dan naskah akademik. Nilai 0 mematikannya sepenuhnya. */
-  --blob-opacity: 0.07;
-  --grid-opacity: 0.03;
-  --dot-opacity: 0.035;
-  --noise-opacity: 0.025;
+  --blob-opacity: 0.045;
+  --grid-opacity: 0.022;
+  --dot-opacity: 0.025;
+  --noise-opacity: 0.018;
 
   color-scheme: light;
 }
 
 /* ---- MODE GELAP ---- */
 [data-theme='dark'] {
-  --bg: #0f1720;
-  --bg-deep: #16202c;
-  --fg: #f3f1ec;
-  --fg-muted: #c3cbd6;
-  --fg-subtle: #91a0b1;
+  --bg: #0e151c;
+  --bg-deep: #16202b;
+  --fg: #f4f2ed;
+  --fg-muted: #ccd4de;
+  --fg-subtle: #a4b2c1;
   /* Di atas biru tua, biru tinta jadi tidak terbaca. Kuningan yang dipakai,
    * dan rasionya tetap di atas ambang WCAG AA untuk teks kecil. */
-  --accent-fg: #cfa963;
+  --accent-fg: #d9b97a;
 
   --glass: rgb(255 255 255 / 0.045);
   --glass-hover: rgb(255 255 255 / 0.08);
   --glass-solid: #16202c;
-  --line: rgb(255 255 255 / 0.11);
-  --line-strong: rgb(255 255 255 / 0.2);
+  --line: rgb(255 255 255 / 0.17);
+  --line-strong: rgb(255 255 255 / 0.3);
   --inner-glow: rgb(255 255 255 / 0.07);
   --shadow-soft: rgb(0 0 0 / 0.5);
   --shadow-lift: rgb(0 0 0 / 0.7);
 
-  --chip-bg: rgb(255 255 255 / 0.055);
-  --chip-fg: #c3cbd6;
+  --chip-bg: rgb(255 255 255 / 0.08);
+  --chip-fg: #ccd4de;
 
-  --blob-opacity: 0.1;
-  --grid-opacity: 0.04;
-  --dot-opacity: 0.045;
-  --noise-opacity: 0.04;
+  --blob-opacity: 0.06;
+  --grid-opacity: 0.028;
+  --dot-opacity: 0.03;
+  --noise-opacity: 0.028;
 
   color-scheme: dark;
 }
@@ -137,10 +137,20 @@ body {
   background-color: var(--bg);
   color: var(--fg);
   font-family: var(--font-sans);
-  /* Sedikit lebih besar dari bawaan browser supaya teks panjang nyaman dibaca
-   * tanpa memaksa pengunjung memperbesar halaman. */
-  font-size: 16px;
-  line-height: 1.6;
+  /*
+    UKURAN HURUF DAN JARAK BARIS
+
+    17 piksel, bukan 16. Satu piksel terdengar sepele, tetapi bedanya nyata
+    bagi pembaca berusia di atas empat puluh, dan situs ini isinya paragraf
+    panjang serta tabel rapat. Yang lebih terasa justru jarak barisnya:
+    dinaikkan ke 1,7 supaya mata punya jalur yang jelas saat berpindah baris,
+    terutama pada kolom judul penelitian yang sering patah tiga baris.
+
+    Angka ini tetap menghormati setelan peramban pengunjung. Yang memperbesar
+    huruf lewat setelan sistem tetap mendapat hasil yang lebih besar lagi.
+  */
+  font-size: 17px;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
@@ -381,8 +391,8 @@ time,
     line-height: 1.7;
   }
   .text-meta {
-    font-size: 0.8125rem;
-    line-height: 1.45;
+    font-size: 0.875rem;
+    line-height: 1.5;
   }
 
   /* Chip kecil untuk skill, tag, dan label. */
@@ -390,9 +400,9 @@ time,
     display: inline-flex;
     align-items: center;
     gap: 0.375rem;
-    padding: 0.32rem 0.72rem;
-    font-size: 0.78125rem;
-    line-height: 1.15rem;
+    padding: 0.34rem 0.74rem;
+    font-size: 0.8125rem;
+    line-height: 1.2rem;
     border-radius: 999px;
     background-color: var(--chip-bg);
     border: 1px solid var(--line);
@@ -473,20 +483,20 @@ time,
   .tabel-akademik {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.875rem;
-    line-height: 1.55;
+    font-size: 0.9375rem;
+    line-height: 1.6;
   }
 
   .tabel-akademik thead th {
     padding: 0.85rem 1rem;
     text-align: left;
     vertical-align: bottom;
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--fg-subtle);
-    border-bottom: 1px solid var(--line-strong);
+    color: var(--fg-muted);
+    border-bottom: 2px solid var(--line-strong);
     white-space: nowrap;
   }
 
@@ -567,11 +577,11 @@ time,
 
     .tabel-akademik tbody td::before {
       content: attr(data-label);
-      font-size: 0.6875rem;
+      font-size: 0.75rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--fg-subtle);
+      color: var(--fg-muted);
       padding-top: 0.2rem;
     }
 
@@ -597,8 +607,8 @@ time,
   .tanda-kuat {
     display: inline-flex;
     align-items: center;
-    padding: 0.15rem 0.55rem;
-    font-size: 0.72rem;
+    padding: 0.18rem 0.6rem;
+    font-size: 0.78rem;
     font-weight: 600;
     line-height: 1.25rem;
     border-radius: 999px;
@@ -1034,7 +1044,7 @@ time,
     --fg: #000000;
     --fg-muted: #1f2937;
     --fg-subtle: #374151;
-    --accent-fg: #1d3557;
+    --accent-fg: #16365c;
     --glass: transparent;
     --glass-hover: transparent;
     --glass-solid: #ffffff;

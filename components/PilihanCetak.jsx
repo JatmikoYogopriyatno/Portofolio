@@ -35,13 +35,13 @@ import Icon from '@/components/Icon';
  */
 
 const PILIHAN = [
-  { kunci: 'portofolio', ikon: 'download' },
-  { kunci: 'cv', ikon: 'file-text' },
-  { kunci: 'cvPeneliti', ikon: 'book' },
+  { kunci: 'portofolio', ikon: 'download', jenis: 'portofolio' },
+  { kunci: 'cv', ikon: 'file-text', jenis: 'cv' },
+  { kunci: 'cvPeneliti', ikon: 'book', jenis: 'cv-peneliti' },
 ];
 
 export default function PilihanCetak() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const { ui, appearance } = portfolio;
 
   if (appearance?.printLink === false) return null;
@@ -56,19 +56,19 @@ export default function PilihanCetak() {
         />
 
         <div className="mt-10 grid gap-4 md:grid-cols-3">
-          {PILIHAN.map(({ kunci, ikon }, i) => {
+          {PILIHAN.map(({ kunci, ikon, jenis }, i) => {
             const dok = DOKUMEN[kunci];
 
             return (
               <Reveal key={dok.href} delay={Math.min(i * 90, 240)} className="h-full">
-                <GlassCard className="h-full">
+                <GlassCard className="flex h-full flex-col">
                   {/*
                     Seluruh kartu jadi satu tautan, bukan cuma tombol kecil di
                     dasarnya. Sasaran seukuran kartu jauh lebih mudah dikenai di
                     layar sentuh, dan tidak ada bagian kartu yang terlihat bisa
                     diklik tapi ternyata tidak.
                   */}
-                  <Link href={dok.href} className="group flex h-full flex-col p-6">
+                  <Link href={dok.href} className="group flex flex-1 flex-col p-6">
                     <span className="grid h-10 w-10 place-items-center rounded-xl bg-linear-to-br from-accent-1 to-accent-2 text-white">
                       <Icon name={ikon} className="h-5 w-5" />
                     </span>
@@ -87,6 +87,28 @@ export default function PilihanCetak() {
                       />
                     </span>
                   </Link>
+
+                  {/*
+                    Unduhan Word ditaruh di luar tautan kartu, bukan di dalamnya.
+                    Tautan di dalam tautan tidak sah dan peramban menanganinya
+                    sendiri sendiri: sebagian mengabaikan yang dalam, sebagian
+                    membuka keduanya sekaligus.
+
+                    Dipisah garis supaya jelas keduanya berbeda: kartu membuka
+                    dokumennya untuk dibaca atau disimpan sebagai PDF, tombol ini
+                    langsung mengunduh berkas Word yang bisa disunting.
+                  */}
+                  <div className="border-t border-line px-6 py-3">
+                    <a
+                      href={`/api/docx/?jenis=${jenis}&lang=${lang}&rentang=semua`}
+                      download
+                      className="tombol-berkas"
+                    >
+                      <Icon name="download" className="h-4 w-4 shrink-0 text-accent" />
+                      <span className="min-w-0 truncate">{t(ui.berkasWord)}</span>
+                      <span className="tombol-berkas-jenis">docx</span>
+                    </a>
+                  </div>
                 </GlassCard>
               </Reveal>
             );

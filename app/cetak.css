@@ -91,8 +91,8 @@
 }
 
 .dok-bilah button {
-  background: #2f5580;
-  border-color: #2f5580;
+  background: #2b4d78;
+  border-color: #2b4d78;
   color: #ffffff;
   cursor: pointer;
 }
@@ -100,6 +100,58 @@
 .dok-bilah button:hover {
   background: #3a6698;
   border-color: #3a6698;
+}
+
+/*
+  PEMILIH RENTANG WAKTU
+
+  Bentuknya sengaja berbeda dari tombol di sebelahnya: satu blok bersekat,
+  bukan kapsul kapsul terpisah. Tombol lain berpindah halaman atau menyimpan
+  berkas, sedangkan yang ini mengubah isi dokumen yang sedang dibaca. Dua
+  pekerjaan berbeda sebaiknya tidak terlihat sama.
+*/
+.dok-bilah-rentang {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.3rem;
+  border: 1px solid rgba(226, 232, 240, 0.22);
+  border-radius: 999px;
+}
+
+.dok-bilah-label {
+  padding-left: 0.55rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.dok-bilah .dok-bilah-pilih {
+  min-height: 1.9rem;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.dok-bilah .dok-bilah-pilih:hover {
+  background: rgba(226, 232, 240, 0.12);
+}
+
+/* Pilihan yang sedang aktif. Tidak cuma diberi warna: warna saja tidak
+   terbaca pengunjung yang sulit membedakan warna, jadi hurufnya ikut
+   ditebalkan dan latarnya dibalik. */
+.dok-bilah .dok-bilah-pilih.aktif {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #16365c;
+  font-weight: 700;
 }
 
 .dok-bilah .dok-bilah-kiri,
@@ -119,7 +171,7 @@
   gap: 1.25rem;
   align-items: flex-start;
   padding-bottom: 1rem;
-  border-bottom: 2px solid #1d3557;
+  border-bottom: 2px solid #16365c;
 }
 
 .dok-foto {
@@ -175,7 +227,7 @@
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #1d3557;
+  color: #16365c;
   break-after: avoid;
 }
 
@@ -183,7 +235,7 @@
   content: '';
   width: 3px;
   height: 0.95em;
-  background: #1d3557;
+  background: #16365c;
   border-radius: 2px;
 }
 
@@ -225,7 +277,7 @@
   margin: 0.1rem 0 0;
   font-size: 9.5pt;
   font-weight: 600;
-  color: #1d3557;
+  color: #16365c;
 }
 
 .dok-teks {

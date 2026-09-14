@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useLanguage } from '@/components/LanguageProvider';
+import { RENTANG, URUTAN_RENTANG } from '@/lib/rentang';
 
 /**
  * =============================================================================
@@ -23,8 +24,11 @@ import { useLanguage } from '@/components/LanguageProvider';
  *  @param {Array<{href: string, label: {id: string, en: string}}>} props.lain
  * =============================================================================
  */
-export default function DokumenBilah({ judul, lain = [] }) {
+export default function DokumenBilah({ judul, lain = [], jenis, rentang, setRentang }) {
   const { lang, setLang } = useLanguage();
+
+  // Alamat unduhan Word, mengikuti bahasa dan rentang yang sedang aktif.
+  const alamatDocx = `/api/docx/?jenis=${encodeURIComponent(jenis ?? '')}&lang=${lang}&rentang=${rentang ?? 'semua'}`;
 
   return (
     <div className="dok-bilah" data-cetak="sembunyi">
@@ -32,6 +36,34 @@ export default function DokumenBilah({ judul, lain = [] }) {
         <Link href="/">{lang === 'id' ? 'Kembali ke situs' : 'Back to site'}</Link>
         <span className="hidden sm:inline">{judul}</span>
       </div>
+
+      {/*
+        PEMILIH RENTANG WAKTU
+
+        Ditaruh di kelompoknya sendiri, terpisah dari tombol tombol lain, karena
+        fungsinya berbeda: yang lain berpindah halaman atau menyimpan berkas,
+        sedangkan yang ini mengubah isi dokumen yang sedang dibaca. Menyatukan
+        keduanya dalam satu deret membuat orang mengira ini tombol unduh juga.
+      */}
+      {setRentang ? (
+        <div className="dok-bilah-rentang" role="group" aria-label={lang === 'id' ? 'Rentang waktu isi dokumen' : 'Document time range'}>
+          <span className="dok-bilah-label">{lang === 'id' ? 'Tampilkan' : 'Show'}</span>
+          {URUTAN_RENTANG.map((kunci) => RENTANG[kunci]).map((pilihan, i) => {
+            const kunci = URUTAN_RENTANG[i];
+            return (
+              <button
+                key={kunci}
+                type="button"
+                onClick={() => setRentang(kunci)}
+                aria-pressed={rentang === kunci}
+                className={rentang === kunci ? 'dok-bilah-pilih aktif' : 'dok-bilah-pilih'}
+              >
+                {pilihan.label[lang] ?? pilihan.label.id}
+              </button>
+            );
+          })}
+        </div>
+      ) : null}
 
       <div className="dok-bilah-kanan">
         {/* Dokumen ikut bahasa yang sedang aktif, jadi sakelarnya disediakan
@@ -49,6 +81,17 @@ export default function DokumenBilah({ judul, lain = [] }) {
             {dok.label?.[lang] ?? dok.label?.id ?? ''}
           </Link>
         ))}
+
+        {/*
+          Word memakai tautan biasa, bukan tombol, supaya bisa dibuka di tab
+          baru atau disalin alamatnya. Berkasnya dibangun di server, lihat
+          app/api/docx/route.js.
+        */}
+        {jenis ? (
+          <a href={alamatDocx} download>
+            {lang === 'id' ? 'Unduh Word' : 'Download Word'}
+          </a>
+        ) : null}
 
         <button type="button" onClick={() => window.print()}>
           {lang === 'id' ? 'Simpan sebagai PDF' : 'Save as PDF'}
