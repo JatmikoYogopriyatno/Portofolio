@@ -1,7 +1,7 @@
 {
   "meta": {
     "siteTitle": "Jatmiko Yogopriyatno, S.IP., M.Si | Dosen dan Peneliti Administrasi Publik",
-    "favicon": "",
+    "favicon": "/images/profil.jpg",
     "googleVerification": "",
     "description": {
       "id": "Portofolio akademik Jatmiko Yogopriyatno, S.IP., M.Si. Dosen dan peneliti Administrasi Publik Universitas Bengkulu, dengan fokus pada analisis kebijakan publik, tata kelola pemerintahan daerah, dan pemodelan sistem.",
@@ -31,7 +31,7 @@
     "scrollProgress": true,
     "countUpStats": true,
     "backToTop": true,
-    "photoAsLogo": false,
+    "photoAsLogo": true,
     "shareButtons": true,
     "heroMarquee": false,
     "printLink": true,
