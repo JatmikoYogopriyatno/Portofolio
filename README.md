@@ -208,6 +208,28 @@ menyentuh repositori online.
 
 ## 3. Alur deploy di Vercel
 
+### vercel.json: mengunci cara proyek ini dibangun
+
+Berkas `vercel.json` di akar repositori memaksa tiga hal: framework Next.js,
+perintah build, dan perintah install.
+
+Isinya terlihat mubazir, karena Vercel biasanya mengenali proyek Next.js
+sendiri dari `package.json`. Tetapi pengenalan itu hanya terjadi **sekali**,
+saat repositori diimpor, dan hasilnya disimpan sebagai setelan proyek yang
+tidak pernah diperiksa ulang.
+
+Kalau saat diimpor repositorinya belum berisi `package.json`, Vercel menyimpan
+Framework Preset sebagai "Other" tanpa perintah build. Setelah kodenya masuk
+pun setelan itu tidak berubah sendiri. Gejalanya menyesatkan: deployment
+berstatus Ready, tidak ada pesan galat, tetapi durasinya cuma satu detik,
+Function Invocations nol, dan setiap alamat menjawab 404 karena yang disajikan
+adalah akar repositori apa adanya, bukan hasil build.
+
+Dengan `vercel.json`, cara proyek ini dibangun ikut tersimpan di dalam
+repositori, jadi tidak bergantung pada keadaan repositori saat pertama kali
+diimpor.
+
+
 ```mermaid
 flowchart LR
     A["Publish di panel /admin<br/>atau git push ke main"] --> B["Commit masuk ke repositori"]
